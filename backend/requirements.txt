@@ -1,0 +1,43 @@
+# ── Core ──────────────────────────────────────────────────────────────────────
+fastapi==0.111.0
+uvicorn[standard]==0.29.0
+python-multipart==0.0.9
+pydantic==2.7.1
+python-dotenv==1.0.1
+
+# ── Database ───────────────────────────────────────────────────────────────────
+sqlalchemy==2.0.30
+slowapi==0.1.9                 # Rate limiting on /chat (30 req/min per IP)
+# psycopg2-binary is only needed when USE_SQLITE=false (PostgreSQL mode).
+# It requires libpq-dev — see Dockerfile for the apt install.
+# Uncomment the line below if you switch to PostgreSQL:
+# psycopg2-binary==2.9.9
+
+# ── HTTP ───────────────────────────────────────────────────────────────────────
+requests==2.31.0
+httpx==0.27.0
+
+# ── NLP / ML ──────────────────────────────────────────────────────────────────
+scikit-learn==1.4.2
+joblib==1.4.2
+numpy==1.26.4
+# torch CPU build — swap index URL for GPU server:
+# --extra-index-url https://download.pytorch.org/whl/cu121
+torch==2.3.0
+sentence-transformers==2.7.0
+
+# ── RAG / Vector DB ────────────────────────────────────────────────────────────
+faiss-cpu==1.8.0
+pdfminer.six==20221105      # PDF text extraction for data/legal/pdfs/
+
+# ── Image handling ─────────────────────────────────────────────────────────────
+Pillow==10.3.0              # RoadWatch image upload validation + storage
+pytesseract>=0.3.13         # /ocr/scan — server-side challan OCR (requires tesseract-ocr system pkg)
+
+# ── Utilities ──────────────────────────────────────────────────────────────────
+tqdm==4.66.4
+
+# ── LLM Reasoning Layer (v5) ──────────────────────────────────────────────────
+httpx>=0.27.0          # Async HTTP client for Gemini + Groq API calls
+pydantic>=2.0.0        # Already present but ensure v2 for model_copy() support
+# Optional: redis>=5.0.0  # Uncomment if using Redis for persistent caching
