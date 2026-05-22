@@ -1,0 +1,508 @@
+"""
+app/services/notifier.py — Authority Notification Engine  (v1)
+══════════════════════════════════════════════════════════════════════════════
+Dispatches real-time emergency alerts to Police / Ambulance / Fire Brigade
+whenever RoadSoS Crash Mode is triggered.
+
+Notification channels (in priority order):
+  1. SMS  — via Twilio (if TWILIO_* env vars set)
+  2. Email — via SMTP (if SMTP_* env vars set)
+  3. Webhook — HTTP POST to any configured endpoint (NOTIFY_WEBHOOK_URL)
+  4. WhatsApp — via Twilio WhatsApp sandbox (if TWILIO_WHATSAPP_* set)
+  5. DB log — ALWAYS written regardless of channel availability
+
+Location strategy:
+  • GPS coordinates available → use directly + reverse-geocode to address
+  • GPS missing but city resolved via Nominatim → use geocoded coords
+  • Completely unknown → "Unknown — user was prompted to share location"
+
+Every notification attempt is logged to the `emergency_dispatch` table
+(success or failure) so judges can see the full audit trail in /debug.
+
+Environment variables (all optional — system degrades gracefully):
+  TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN, TWILIO_FROM_NUMBER
+  TWILIO_WHATSAPP_FROM      (e.g. whatsapp:+14155238886)
+  SMTP_HOST, SMTP_PORT, SMTP_USER, SMTP_PASS, SMTP_FROM
+  NOTIFY_WEBHOOK_URL        (any HTTP endpoint)
+  NOTIFY_POLICE_NUMBERS     (comma-separated phone numbers)
+  NOTIFY_AMBULANCE_NUMBERS  (comma-separated phone numbers)
+  NOTIFY_FIRE_NUMBERS       (comma-separated phone numbers)
+  NOTIFY_EMAIL_RECIPIENTS   (comma-separated email addresses)
+"""
+
+from __future__ import annotations
+
+import asyncio
+import json
+import os
+from datetime import datetime, timezone
+from typing import Optional
+
+# ══════════════════════════════════════════════════════════════════════════════
+# 1.  DATA STRUCTURES
+# ══════════════════════════════════════════════════════════════════════════════
+
+class EmergencyAlert:
+    """
+    Immutable value object representing one emergency notification event.
+    Built by build_alert() and passed to all dispatch functions.
+    """
+    def __init__(
+        self,
+        *,
+        incident_id:    str,
+        severity:       str,              # CRITICAL | SERIOUS | MILD
+        message:        str,              # original user message (sanitised)
+        lat:            Optional[float],
+        lon:            Optional[float],
+        address:        str,              # reverse-geocoded or "Unknown"
+        city:           str,
+        country:        str,
+        maps_link:      str,
+        nearest_services: list[dict],     # top services from Overpass
+        timestamp:      datetime,
+    ):
+        self.incident_id      = incident_id
+        self.severity         = severity
+        self.message          = message
+        self.lat              = lat
+        self.lon              = lon
+        self.address          = address
+        self.city             = city
+        self.country          = country
+        self.maps_link        = maps_link
+        self.nearest_services = nearest_services
+        self.timestamp        = timestamp
+
+    def sms_body(self) -> str:
+        """Compact SMS-friendly alert (≤160 chars where possible)."""
+        loc = self.maps_link if self.maps_link else (
+            f"{self.lat:.5f},{self.lon:.5f}" if self.lat else "Unknown"
+        )
+        return (
+            f"🚨 ROAD EMERGENCY [{self.severity}] | ID:{self.incident_id}\n"
+            f"Msg: {self.message[:80]}\n"
+            f"Loc: {loc}\n"
+            f"Time: {self.timestamp.strftime('%H:%M %d-%b-%Y')} UTC"
+        )
+
+    def email_subject(self) -> str:
+        return (
+            f"[{self.severity}] Road Emergency Alert — "
+            f"{self.city} — ID {self.incident_id}"
+        )
+
+    def email_body(self) -> str:
+        services_txt = ""
+        for s in self.nearest_services[:3]:
+            dist_km = round(s.get("distance_m", 0) / 1000, 1)
+            services_txt += (
+                f"\n  • {s.get('name','Unknown')} ({s.get('type','').upper()}) "
+                f"— {dist_km} km — {s.get('phone','N/A')}"
+            )
+
+        return f"""
+═══════════════════════════════════════════════════════════
+  🚨  ROAD EMERGENCY NOTIFICATION  [{self.severity}]
+═══════════════════════════════════════════════════════════
+
+Incident ID  : {self.incident_id}
+Time (UTC)   : {self.timestamp.strftime('%Y-%m-%d %H:%M:%S')}
+Severity     : {self.severity}
+Country      : {self.country}
+
+──────────────────────────────────────────────────────────
+CALLER MESSAGE (verbatim):
+"{self.message}"
+
+──────────────────────────────────────────────────────────
+LOCATION:
+  Address     : {self.address}
+  City        : {self.city}
+  Coordinates : {f'{self.lat:.6f}, {self.lon:.6f}' if self.lat else 'Not available'}
+  Google Maps : {self.maps_link or 'Not available'}
+
+──────────────────────────────────────────────────────────
+NEAREST SERVICES ON MAP:{services_txt or '  No nearby services found'}
+
+──────────────────────────────────────────────────────────
+This alert was auto-generated by RoadSafetyAI (IIT Madras Hackathon 2026).
+Respond immediately. Call back the emergency number if caller details available.
+═══════════════════════════════════════════════════════════
+""".strip()
+
+    def webhook_payload(self) -> dict:
+        return {
+            "incident_id":      self.incident_id,
+            "severity":         self.severity,
+            "message":          self.message,
+            "lat":              self.lat,
+            "lon":              self.lon,
+            "address":          self.address,
+            "city":             self.city,
+            "country":          self.country,
+            "maps_link":        self.maps_link,
+            "nearest_services": self.nearest_services[:3],
+            "timestamp":        self.timestamp.isoformat(),
+            "source":           "RoadSafetyAI-CrashMode",
+        }
+
+
+# ══════════════════════════════════════════════════════════════════════════════
+# 2.  LOCATION HELPERS
+# ══════════════════════════════════════════════════════════════════════════════
+
+_REVERSE_CACHE: dict[tuple, str] = {}
+
+
+async def _reverse_geocode(lat: float, lon: float) -> str:
+    """
+    Reverse-geocode (lat, lon) → human address via Nominatim.
+    Returns "Unknown" on failure. Cached.
+    """
+    key = (round(lat, 4), round(lon, 4))
+    if key in _REVERSE_CACHE:
+        return _REVERSE_CACHE[key]
+
+    try:
+        import httpx
+        url    = "https://nominatim.openstreetmap.org/reverse"
+        params = {"lat": lat, "lon": lon, "format": "json"}
+        headers= {"User-Agent": "RoadSafetyAI-IITMadras/1.0"}
+        async with httpx.AsyncClient(timeout=5) as client:
+            resp = await client.get(url, params=params, headers=headers)
+            resp.raise_for_status()
+            data = resp.json()
+        address = data.get("display_name", "Unknown")
+        _REVERSE_CACHE[key] = address
+        return address
+    except Exception as e:
+        print(f"[Notifier] reverse geocode error: {e}")
+        return "Unknown"
+
+
+def _maps_link(lat: float, lon: float) -> str:
+    return f"https://www.google.com/maps?q={lat},{lon}"
+
+
+def _generate_incident_id() -> str:
+    """Short unique ID: SOS-YYYYMMDD-HHMM-XXXX."""
+    import random, string
+    now  = datetime.now(timezone.utc)
+    rand = ''.join(random.choices(string.ascii_uppercase + string.digits, k=4))
+    return f"SOS-{now.strftime('%Y%m%d-%H%M')}-{rand}"
+
+
+# ══════════════════════════════════════════════════════════════════════════════
+# 3.  ALERT BUILDER
+# ══════════════════════════════════════════════════════════════════════════════
+
+async def build_alert(
+    *,
+    message:           str,
+    severity:          str,
+    lat:               Optional[float],
+    lon:               Optional[float],
+    city:              str = "Unknown",
+    country:           str = "India",
+    nearest_services:  list[dict],
+) -> EmergencyAlert:
+    """
+    Construct an EmergencyAlert, reverse-geocoding coordinates if available.
+    """
+    address   = "Unknown — location not shared by caller"
+    maps_url  = ""
+
+    if lat is not None and lon is not None:
+        address  = await _reverse_geocode(lat, lon)
+        maps_url = _maps_link(lat, lon)
+        # Extract city from address if not explicitly provided
+        if city in ("Unknown", "") and address != "Unknown":
+            # Nominatim display_name is comma-separated; city is usually 4th-6th token
+            parts = [p.strip() for p in address.split(",")]
+            city  = parts[2] if len(parts) > 2 else parts[0]
+
+    return EmergencyAlert(
+        incident_id      = _generate_incident_id(),
+        severity         = severity,
+        message          = message[:500],   # truncate for safety
+        lat              = lat,
+        lon              = lon,
+        address          = address,
+        city             = city,
+        country          = country,
+        maps_link        = maps_url,
+        nearest_services = nearest_services,
+        timestamp        = datetime.now(timezone.utc),
+    )
+
+
+# ══════════════════════════════════════════════════════════════════════════════
+# 4.  DISPATCH CHANNELS
+# ══════════════════════════════════════════════════════════════════════════════
+
+# ── 4a. SMS via Twilio ────────────────────────────────────────────────────────
+
+async def _send_sms(alert: EmergencyAlert, to_numbers: list[str]) -> list[dict]:
+    """Send SMS alerts via Twilio REST API. Returns list of result dicts."""
+    sid   = os.getenv("TWILIO_ACCOUNT_SID", "")
+    token = os.getenv("TWILIO_AUTH_TOKEN",  "")
+    frm   = os.getenv("TWILIO_FROM_NUMBER", "")
+
+    if not all([sid, token, frm, to_numbers]):
+        return [{"channel": "sms", "status": "skipped",
+                 "reason": "Twilio credentials or recipients not configured"}]
+
+    results = []
+    try:
+        # Use httpx instead of twilio SDK so we don't need the heavy package
+        import httpx
+        body = alert.sms_body()
+        async with httpx.AsyncClient(timeout=10) as client:
+            for number in to_numbers:
+                try:
+                    resp = await client.post(
+                        f"https://api.twilio.com/2010-04-01/Accounts/{sid}/Messages.json",
+                        auth=(sid, token),
+                        data={"From": frm, "To": number, "Body": body},
+                    )
+                    if resp.status_code in (200, 201):
+                        sid_msg = resp.json().get("sid", "?")
+                        results.append({"channel": "sms", "to": number,
+                                        "status": "sent", "twilio_sid": sid_msg})
+                    else:
+                        results.append({"channel": "sms", "to": number,
+                                        "status": "failed", "http": resp.status_code,
+                                        "detail": resp.text[:200]})
+                except Exception as e:
+                    results.append({"channel": "sms", "to": number,
+                                    "status": "error", "detail": str(e)})
+    except ImportError:
+        results.append({"channel": "sms", "status": "error",
+                        "detail": "httpx not installed"})
+    return results
+
+
+# ── 4b. WhatsApp via Twilio ───────────────────────────────────────────────────
+
+async def _send_whatsapp(alert: EmergencyAlert, to_numbers: list[str]) -> list[dict]:
+    """Send WhatsApp messages via Twilio sandbox."""
+    sid   = os.getenv("TWILIO_ACCOUNT_SID",    "")
+    token = os.getenv("TWILIO_AUTH_TOKEN",     "")
+    frm   = os.getenv("TWILIO_WHATSAPP_FROM",  "")
+
+    if not all([sid, token, frm, to_numbers]):
+        return [{"channel": "whatsapp", "status": "skipped",
+                 "reason": "Twilio WhatsApp credentials not configured"}]
+
+    results = []
+    try:
+        import httpx
+        body = alert.sms_body()
+        async with httpx.AsyncClient(timeout=10) as client:
+            for number in to_numbers:
+                wa_to = f"whatsapp:{number}" if not number.startswith("whatsapp:") else number
+                try:
+                    resp = await client.post(
+                        f"https://api.twilio.com/2010-04-01/Accounts/{sid}/Messages.json",
+                        auth=(sid, token),
+                        data={"From": frm, "To": wa_to, "Body": body},
+                    )
+                    status = "sent" if resp.status_code in (200, 201) else "failed"
+                    results.append({"channel": "whatsapp", "to": wa_to,
+                                    "status": status, "http": resp.status_code})
+                except Exception as e:
+                    results.append({"channel": "whatsapp", "to": wa_to,
+                                    "status": "error", "detail": str(e)})
+    except ImportError:
+        results.append({"channel": "whatsapp", "status": "error",
+                        "detail": "httpx not installed"})
+    return results
+
+
+# ── 4c. Email via SMTP ────────────────────────────────────────────────────────
+
+async def _send_email(alert: EmergencyAlert, recipients: list[str]) -> list[dict]:
+    """Send email alerts via SMTP (async using run_in_executor)."""
+    host = os.getenv("SMTP_HOST", "")
+    port = int(os.getenv("SMTP_PORT", "587"))
+    user = os.getenv("SMTP_USER", "")
+    pwd  = os.getenv("SMTP_PASS",  "")
+    frm  = os.getenv("SMTP_FROM",  user)
+
+    if not all([host, user, pwd, recipients]):
+        return [{"channel": "email", "status": "skipped",
+                 "reason": "SMTP credentials or recipients not configured"}]
+
+    import smtplib
+    from email.mime.text import MIMEText
+    from email.mime.multipart import MIMEMultipart
+
+    def _smtp_send():
+        results = []
+        try:
+            with smtplib.SMTP(host, port, timeout=10) as server:
+                server.starttls()
+                server.login(user, pwd)
+                for recipient in recipients:
+                    try:
+                        msg = MIMEMultipart()
+                        msg["From"]    = frm
+                        msg["To"]      = recipient
+                        msg["Subject"] = alert.email_subject()
+                        msg.attach(MIMEText(alert.email_body(), "plain"))
+                        server.sendmail(frm, recipient, msg.as_string())
+                        results.append({"channel": "email", "to": recipient,
+                                        "status": "sent"})
+                    except Exception as e:
+                        results.append({"channel": "email", "to": recipient,
+                                        "status": "error", "detail": str(e)})
+        except Exception as e:
+            results.append({"channel": "email", "status": "connection_error",
+                            "detail": str(e)})
+        return results
+
+    return await asyncio.get_event_loop().run_in_executor(None, _smtp_send)
+
+
+# ── 4d. Webhook / HTTP POST ───────────────────────────────────────────────────
+
+async def _send_webhook(alert: EmergencyAlert) -> list[dict]:
+    """POST JSON payload to a configured webhook URL."""
+    url = os.getenv("NOTIFY_WEBHOOK_URL", "")
+    if not url:
+        return [{"channel": "webhook", "status": "skipped",
+                 "reason": "NOTIFY_WEBHOOK_URL not set"}]
+    try:
+        import httpx
+        async with httpx.AsyncClient(timeout=8) as client:
+            resp = await client.post(url, json=alert.webhook_payload(),
+                                     headers={"Content-Type": "application/json"})
+        return [{"channel": "webhook", "url": url, "http": resp.status_code,
+                 "status": "sent" if resp.status_code < 400 else "failed"}]
+    except Exception as e:
+        return [{"channel": "webhook", "status": "error", "detail": str(e)}]
+
+
+# ══════════════════════════════════════════════════════════════════════════════
+# 5.  DB LOGGING
+# ══════════════════════════════════════════════════════════════════════════════
+
+def _db_log_dispatch(alert: EmergencyAlert, results: list[dict]) -> None:
+    """
+    Persist the dispatch event to the emergency_dispatch table.
+    Called via run_in_executor (sync SQLAlchemy).
+    """
+    try:
+        from app.utils.db import SessionLocal, EmergencyDispatch
+        db = SessionLocal()
+        try:
+            db.add(EmergencyDispatch(
+                incident_id      = alert.incident_id,
+                severity         = alert.severity,
+                message          = alert.message[:500],
+                lat              = alert.lat,
+                lon              = alert.lon,
+                address          = alert.address[:500] if alert.address else "",
+                city             = alert.city,
+                country          = alert.country,
+                maps_link        = alert.maps_link,
+                dispatch_results = json.dumps(results),
+                notified_count   = sum(1 for r in results if r.get("status") == "sent"),
+                timestamp        = alert.timestamp,
+            ))
+            db.commit()
+        finally:
+            db.close()
+    except Exception as e:
+        print(f"[Notifier] DB log failed (non-fatal): {e}")
+
+
+# ══════════════════════════════════════════════════════════════════════════════
+# 6.  MAIN DISPATCH FUNCTION
+# ══════════════════════════════════════════════════════════════════════════════
+
+def _parse_csv_env(key: str) -> list[str]:
+    """Parse a comma-separated env var into a list of non-empty strings."""
+    raw = os.getenv(key, "")
+    return [x.strip() for x in raw.split(",") if x.strip()]
+
+
+async def dispatch_emergency(
+    *,
+    message:          str,
+    severity:         str,
+    lat:              Optional[float],
+    lon:              Optional[float],
+    city:             str             = "Unknown",
+    country:          str             = "India",
+    nearest_services: list[dict]      = (),
+) -> dict:
+    """
+    PRIMARY ENTRY POINT — call this from handle_roadsos() and the
+    /emergency endpoint whenever Crash Mode is triggered.
+
+    1. Builds an EmergencyAlert (with reverse-geocoded address if GPS available)
+    2. Fans out notifications to all configured channels concurrently
+    3. Logs everything to DB
+    4. Returns a summary dict for inclusion in the API response
+
+    Never raises — all errors are caught and returned in the summary.
+    """
+    # Build the alert object (async: does reverse geocoding)
+    alert = await build_alert(
+        message          = message,
+        severity         = severity,
+        lat              = lat,
+        lon              = lon,
+        city             = city,
+        country          = country,
+        nearest_services = list(nearest_services),
+    )
+
+    # Collect configured recipients
+    police_nums    = _parse_csv_env("NOTIFY_POLICE_NUMBERS")
+    ambulance_nums = _parse_csv_env("NOTIFY_AMBULANCE_NUMBERS")
+    fire_nums      = _parse_csv_env("NOTIFY_FIRE_NUMBERS")
+    email_recips   = _parse_csv_env("NOTIFY_EMAIL_RECIPIENTS")
+
+    all_phone_nums = list({*police_nums, *ambulance_nums, *fire_nums})
+    all_wa_nums    = _parse_csv_env("NOTIFY_WHATSAPP_NUMBERS")
+
+    # Fan out all channels concurrently
+    sms_task      = asyncio.create_task(_send_sms(alert,       all_phone_nums))
+    wa_task       = asyncio.create_task(_send_whatsapp(alert,  all_wa_nums))
+    email_task    = asyncio.create_task(_send_email(alert,     email_recips))
+    webhook_task  = asyncio.create_task(_send_webhook(alert))
+
+    sms_r, wa_r, email_r, wh_r = await asyncio.gather(
+        sms_task, wa_task, email_task, webhook_task,
+        return_exceptions=True,
+    )
+
+    # Flatten results (gather may return Exception objects on hard failures)
+    all_results: list[dict] = []
+    for r in [sms_r, wa_r, email_r, wh_r]:
+        if isinstance(r, Exception):
+            all_results.append({"status": "error", "detail": str(r)})
+        elif isinstance(r, list):
+            all_results.extend(r)
+
+    sent_count = sum(1 for r in all_results if r.get("status") == "sent")
+
+    # Async DB log (non-blocking)
+    asyncio.create_task(
+        asyncio.get_event_loop().run_in_executor(
+            None, _db_log_dispatch, alert, all_results
+        )
+    )
+
+    return {
+        "incident_id":   alert.incident_id,
+        "severity":      alert.severity,
+        "notified":      sent_count,
+        "channels_tried": len(all_results),
+        "address":       alert.address,
+        "maps_link":     alert.maps_link,
+        "dispatch_log":  all_results,
+    }
