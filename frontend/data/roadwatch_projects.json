@@ -1,0 +1,1534 @@
+{
+  "_meta": {
+    "version": "3.0",
+    "region": "Indore, Madhya Pradesh + BIMSTEC Reference Cities",
+    "generated": "2026-05-10",
+    "total": 25,
+    "bimstec_cities": [
+      "Dhaka, Bangladesh",
+      "Colombo, Sri Lanka",
+      "Kathmandu, Nepal",
+      "Yangon, Myanmar",
+      "Thimphu, Bhutan",
+      "Bangkok, Thailand"
+    ],
+    "description": "Sample dataset for RoadWatch module. Combines Indore IMC real-world patterns with BIMSTEC regional benchmarks."
+  },
+  "projects": [
+    {
+      "ticket_id": "RW-2026-IND-0047",
+      "issue_type": "Critical Pothole",
+      "issue_emoji": "🕳️",
+      "description": "3-feet wide, 6-inch deep pothole on AB Road near Vijay Nagar Square. Caused two motorcycle accidents this week. Waterlogging worsens after rain.",
+      "severity": "critical",
+      "status": "in_progress",
+      "address": "AB Road, Vijay Nagar, Indore — near Treasure Island Mall",
+      "lat": 22.7467,
+      "lon": 75.8929,
+      "submitted_at": "2026-04-18",
+      "authority": "Indore Municipal Corporation – Roads & Infrastructure Dept.",
+      "authority_tier": "Municipal",
+      "authority_contact": "0731-2700000",
+      "authority_email": "roads@imc.gov.in",
+      "jurisdiction": "Ward 41 — Vijay Nagar",
+      "escalation_path": [
+        {
+          "tier": "Ward Officer",
+          "name": "Sri Ramesh Patil",
+          "contact": "0731-2700101",
+          "email": "ward41@imc.gov.in"
+        },
+        {
+          "tier": "Zonal Engineer",
+          "name": "Sri Anil Sharma",
+          "contact": "0731-2700210",
+          "email": "zone2eng@imc.gov.in"
+        },
+        {
+          "tier": "Chief Engineer Roads",
+          "name": "Sri D.K. Malviya",
+          "contact": "0731-2700300",
+          "email": "ce.roads@imc.gov.in"
+        },
+        {
+          "tier": "Municipal Commissioner",
+          "name": "IAS Shailendra Singh",
+          "contact": "0731-2532710",
+          "email": "mc@imc.gov.in"
+        }
+      ],
+      "estimated_resolution_days": 14,
+      "road_name": "AB Road (Vijay Nagar Stretch — 1.2 km)",
+      "contractor": "M/s Sharma Construction Pvt. Ltd.",
+      "contract_value": 42000000,
+      "contract_end": "2026-03-31",
+      "sanctioned_inr": 42000000,
+      "spent_inr": 31000000,
+      "last_repair_date": "2025-08-15",
+      "sla_target_days": 14,
+      "days_elapsed": 21,
+      "history": [
+        {
+          "date": "2026-05-01",
+          "action": "Repair crew deployed",
+          "actor": "IMC Roads Division",
+          "note": "Patching materials en route from depot"
+        },
+        {
+          "date": "2026-04-28",
+          "action": "Inspection completed",
+          "actor": "Ward Zonal Engineer",
+          "note": "Depth measured at 15 cm — Category Critical"
+        },
+        {
+          "date": "2026-04-22",
+          "action": "Acknowledged by Ward Officer",
+          "actor": "Ward 41 Office"
+        },
+        {
+          "date": "2026-04-18",
+          "action": "Ticket submitted",
+          "actor": "Community Citizen — RoadWatch App"
+        }
+      ],
+      "photos": [],
+      "ai_confidence": 0.94,
+      "bimstec_context": "Pothole density in South Asian cities averages 12 per km during monsoon season. Indore's 2026 monsoon pre-repair drive has patched 1,240 potholes city-wide.",
+      "similar_cases": 340
+    },
+    {
+      "ticket_id": "RW-2026-IND-0051",
+      "issue_type": "Non-Functional Traffic Signal",
+      "issue_emoji": "🚦",
+      "description": "Traffic signal at Palasia Square completely dark since Tuesday evening. 4-way intersection causing near-misses every 5 minutes during peak hours.",
+      "severity": "critical",
+      "status": "acknowledged",
+      "address": "Palasia Chowk, Indore — intersection of MG Road and Nehru Road",
+      "lat": 22.7237,
+      "lon": 75.8803,
+      "submitted_at": "2026-05-02",
+      "authority": "Indore Traffic Police – Signal Maintenance Cell",
+      "authority_tier": "Municipal",
+      "authority_contact": "0731-2527272",
+      "authority_email": "signals@mppolice.gov.in",
+      "jurisdiction": "Indore City – Central Zone",
+      "escalation_path": [
+        {
+          "tier": "Traffic Inspector",
+          "name": "Inspector K.S. Chouhan",
+          "contact": "0731-2527273",
+          "email": "insp.central@mppolice.gov.in"
+        },
+        {
+          "tier": "DCP Traffic",
+          "name": "DCP Ritu Shrivastava",
+          "contact": "0731-2527100",
+          "email": "dcp.traffic@mppolice.gov.in"
+        },
+        {
+          "tier": "SP Indore",
+          "name": "SP Kamlesh Mishra",
+          "contact": "0731-2527001",
+          "email": "sp.indore@mppolice.gov.in"
+        }
+      ],
+      "estimated_resolution_days": 3,
+      "road_name": "MG Road – Palasia Junction",
+      "contractor": "Siemens Traffic Solutions Ltd.",
+      "contract_value": 18500000,
+      "contract_end": "2027-06-30",
+      "sanctioned_inr": 18500000,
+      "spent_inr": 11200000,
+      "last_repair_date": "2025-11-10",
+      "sla_target_days": 3,
+      "days_elapsed": 7,
+      "history": [
+        {
+          "date": "2026-05-04",
+          "action": "Technician dispatched",
+          "actor": "Siemens Traffic Solutions",
+          "note": "Controller unit failure suspected"
+        },
+        {
+          "date": "2026-05-03",
+          "action": "Acknowledged — Priority 1",
+          "actor": "Traffic Control Room"
+        },
+        {
+          "date": "2026-05-02",
+          "action": "Reported by 3 citizens",
+          "actor": "Multiple community reports"
+        }
+      ],
+      "photos": [],
+      "ai_confidence": 0.98,
+      "bimstec_context": "Dysfunctional signals cause 23% of urban intersection accidents across BIMSTEC nations. Dhaka's average response SLA for signal faults is 24 hours; Colombo's is 48 hours.",
+      "similar_cases": 89
+    },
+    {
+      "ticket_id": "RW-2026-IND-0039",
+      "issue_type": "Severe Road Cave-In",
+      "issue_emoji": "⚠️",
+      "description": "A 15×8 ft section of Rau-Pithampur Road has caved in due to underground drain rupture. Heavy vehicles are using the shoulder, creating further damage.",
+      "severity": "critical",
+      "status": "in_progress",
+      "address": "Rau-Pithampur Road SH-27, km 4.2 — near Bicholi Mardana bypass",
+      "lat": 22.6821,
+      "lon": 75.8432,
+      "submitted_at": "2026-04-25",
+      "authority": "Madhya Pradesh Road Development Corporation",
+      "authority_tier": "State",
+      "authority_contact": "0755-2559333",
+      "authority_email": "mprdc@mp.gov.in",
+      "jurisdiction": "State Highway SH-27",
+      "escalation_path": [
+        {
+          "tier": "Field Engineer",
+          "name": "Sri Vinod Tiwari",
+          "contact": "0755-2559334",
+          "email": "fe.sh27@mprdc.mp.gov.in"
+        },
+        {
+          "tier": "Chief Engineer",
+          "name": "Sri P.K. Srivastava",
+          "contact": "0755-2559200",
+          "email": "ce@mprdc.mp.gov.in"
+        },
+        {
+          "tier": "PWD Secretary",
+          "name": "IAS Kavita Gupta",
+          "contact": "0755-2441399",
+          "email": "secy.pwd@mp.gov.in"
+        }
+      ],
+      "estimated_resolution_days": 7,
+      "road_name": "SH-27 Rau–Pithampur (km 4.0–4.5)",
+      "contractor": "M/s Rajesh Infra Builders",
+      "contract_value": 95000000,
+      "contract_end": "2026-12-31",
+      "sanctioned_inr": 95000000,
+      "spent_inr": 67000000,
+      "last_repair_date": "2025-06-10",
+      "sla_target_days": 7,
+      "days_elapsed": 13,
+      "history": [
+        {
+          "date": "2026-05-03",
+          "action": "Emergency repair crew on site",
+          "actor": "MPRDC Field Team",
+          "note": "Traffic restricted to one lane"
+        },
+        {
+          "date": "2026-04-30",
+          "action": "Drain rupture confirmed",
+          "actor": "Hydraulic Engineer",
+          "note": "Culvert collapse — requires full replacement"
+        },
+        {
+          "date": "2026-04-26",
+          "action": "State authority alerted",
+          "actor": "IMC Boundary Officer"
+        },
+        {
+          "date": "2026-04-25",
+          "action": "Ticket submitted",
+          "actor": "Truck driver — via RoadWatch"
+        }
+      ],
+      "photos": [],
+      "ai_confidence": 0.91,
+      "bimstec_context": "Underground drain collapses account for 8% of sudden road failures in monsoon-prone South Asian cities. Myanmar's YCDC reports 40+ similar incidents per monsoon cycle in Yangon.",
+      "similar_cases": 47
+    },
+    {
+      "ticket_id": "RW-2026-IND-0062",
+      "issue_type": "Missing Road Signs",
+      "issue_emoji": "🪧",
+      "description": "4 road signs missing at Bhawarkuwa–Bicholi intersection including speed limit, no-entry, and a pedestrian crossing sign. Removed during road widening works 3 months ago, not replaced.",
+      "severity": "high",
+      "status": "submitted",
+      "address": "Bhawarkuwa Junction, Indore — Ring Road merger",
+      "lat": 22.7536,
+      "lon": 75.8803,
+      "submitted_at": "2026-05-05",
+      "authority": "Indore Municipal Corporation – Traffic Engineering Cell",
+      "authority_tier": "Municipal",
+      "authority_contact": "0731-2700120",
+      "authority_email": "traffic.eng@imc.gov.in",
+      "jurisdiction": "Ring Road Corridor",
+      "escalation_path": [
+        {
+          "tier": "Traffic Engineering Officer",
+          "name": "Sri Arun Mehta",
+          "contact": "0731-2700121",
+          "email": "teo@imc.gov.in"
+        },
+        {
+          "tier": "Zonal Engineer",
+          "name": "Sri Pawan Jain",
+          "contact": "0731-2700215",
+          "email": "zone3eng@imc.gov.in"
+        },
+        {
+          "tier": "Chief Engineer",
+          "name": "Sri D.K. Malviya",
+          "contact": "0731-2700300",
+          "email": "ce.roads@imc.gov.in"
+        }
+      ],
+      "estimated_resolution_days": 5,
+      "road_name": "Ring Road — Bhawarkuwa Junction",
+      "contractor": "M/s National Highway Signage Co.",
+      "contract_value": 3200000,
+      "contract_end": "2026-09-30",
+      "sanctioned_inr": 3200000,
+      "spent_inr": 1100000,
+      "last_repair_date": "2025-09-01",
+      "sla_target_days": 5,
+      "days_elapsed": 4,
+      "history": [
+        {
+          "date": "2026-05-05",
+          "action": "Ticket submitted",
+          "actor": "Traffic Police Officer — via RoadWatch App"
+        }
+      ],
+      "photos": [],
+      "ai_confidence": 0.87,
+      "bimstec_context": "Missing road signage is responsible for 18% of highway fatalities in Nepal's Terai corridor according to DoR 2025 report.",
+      "similar_cases": 128
+    },
+    {
+      "ticket_id": "RW-2026-IND-0028",
+      "issue_type": "Streetlight Outage Cluster",
+      "issue_emoji": "💡",
+      "description": "14 consecutive streetlights non-functional on LIG Link Road. Reported 6 snatch-and-run incidents in the dark stretch in the past month.",
+      "severity": "high",
+      "status": "resolved",
+      "address": "LIG Link Road, Indore — between Ring Road and Hospital Square",
+      "lat": 22.7139,
+      "lon": 75.8625,
+      "submitted_at": "2026-03-12",
+      "authority": "Indore Municipal Corporation – Electrical Dept.",
+      "authority_tier": "Municipal",
+      "authority_contact": "0731-2700400",
+      "authority_email": "electrical@imc.gov.in",
+      "jurisdiction": "Ward 28 — LIG",
+      "escalation_path": [
+        {
+          "tier": "Electrical Engineer",
+          "name": "Sri Rakesh Patel",
+          "contact": "0731-2700401",
+          "email": "ee.lig@imc.gov.in"
+        },
+        {
+          "tier": "Chief Electrical Officer",
+          "name": "Sri M.P. Chandrakar",
+          "contact": "0731-2700450",
+          "email": "ceo@imc.gov.in"
+        }
+      ],
+      "estimated_resolution_days": 7,
+      "road_name": "LIG Link Road (1.4 km stretch)",
+      "contractor": "M/s Jyoti Electricals",
+      "contract_value": 8600000,
+      "contract_end": "2026-11-30",
+      "sanctioned_inr": 8600000,
+      "spent_inr": 8100000,
+      "last_repair_date": "2026-03-27",
+      "sla_target_days": 7,
+      "days_elapsed": 15,
+      "history": [
+        {
+          "date": "2026-03-27",
+          "action": "All 14 lights restored",
+          "actor": "Jyoti Electricals crew",
+          "note": "Faulty MCB replaced at transformer station"
+        },
+        {
+          "date": "2026-03-22",
+          "action": "Works order issued",
+          "actor": "Chief Electrical Officer"
+        },
+        {
+          "date": "2026-03-18",
+          "action": "Electrical inspection completed",
+          "actor": "IMC Electrical Dept."
+        },
+        {
+          "date": "2026-03-12",
+          "action": "Ticket submitted",
+          "actor": "Local RWA President — via RoadWatch"
+        }
+      ],
+      "photos": [],
+      "ai_confidence": 0.96,
+      "bimstec_context": "Urban lighting coverage in BIMSTEC nations: India 78%, Sri Lanka 91%, Nepal 62%, Bangladesh 71%. WHO recommends 100% critical-road coverage for pedestrian safety.",
+      "similar_cases": 215
+    },
+    {
+      "ticket_id": "RW-2026-IND-0068",
+      "issue_type": "Guardrail Collapse",
+      "issue_emoji": "🛡️",
+      "description": "40-metre section of highway guardrail on Bypass Road collapsed after truck collision in January. Still unreplaced after 4 months — sheer 8-metre drop to farmland below.",
+      "severity": "critical",
+      "status": "in_progress",
+      "address": "Indore Bypass Road NH-52, km 14.6 — near Lasudia Mori overpass",
+      "lat": 22.78,
+      "lon": 75.81,
+      "submitted_at": "2026-01-28",
+      "authority": "National Highways Authority of India – Indore PIU",
+      "authority_tier": "National",
+      "authority_contact": "0731-2493000",
+      "authority_email": "piu.indore@nhai.gov.in",
+      "jurisdiction": "NH-52 — Indore–Dewas",
+      "escalation_path": [
+        {
+          "tier": "Project Director",
+          "name": "Sri Arvind Khatri",
+          "contact": "0731-2493001",
+          "email": "pd.nh52@nhai.gov.in"
+        },
+        {
+          "tier": "RO Bhopal",
+          "name": "Sri Suresh Tripathi",
+          "contact": "0755-2553700",
+          "email": "ro.bhopal@nhai.gov.in"
+        },
+        {
+          "tier": "GM Headquarters",
+          "name": "Sri Rajnish Kumar",
+          "contact": "011-25074100",
+          "email": "gm.hq@nhai.gov.in"
+        }
+      ],
+      "estimated_resolution_days": 21,
+      "road_name": "NH-52 Bypass — Lasudia Mori to Dewas Naka",
+      "contractor": "Dilip Buildcon Ltd.",
+      "contract_value": 280000000,
+      "contract_end": "2027-03-31",
+      "sanctioned_inr": 280000000,
+      "spent_inr": 198000000,
+      "last_repair_date": "2025-03-15",
+      "sla_target_days": 30,
+      "days_elapsed": 101,
+      "history": [
+        {
+          "date": "2026-05-08",
+          "action": "New guardrail materials on site",
+          "actor": "Dilip Buildcon",
+          "note": "W-beam steel sections received from Raipur depot"
+        },
+        {
+          "date": "2026-03-10",
+          "action": "Escalated to NHAI RO Bhopal",
+          "actor": "IMC Commissioner's Office"
+        },
+        {
+          "date": "2026-02-14",
+          "action": "Tender issued for replacement",
+          "actor": "NHAI PIU Indore",
+          "note": "L1 bid ₹14.2 lakh from Dilip Buildcon"
+        },
+        {
+          "date": "2026-01-28",
+          "action": "Initial report filed",
+          "actor": "Highway Patrol — NH52"
+        }
+      ],
+      "photos": [],
+      "ai_confidence": 0.99,
+      "bimstec_context": "NHAI guardrail replacement SLA is 30 days for critical sections. At 101 days elapsed, this is a 3× SLA breach — among the worst in the BIMSTEC comparative dataset.",
+      "similar_cases": 23
+    },
+    {
+      "ticket_id": "RW-2026-IND-0074",
+      "issue_type": "Pedestrian Bridge Railing Broken",
+      "issue_emoji": "🌉",
+      "description": "Railing on the BRTS pedestrian overbridge at Geeta Bhavan Square broken at 3 points. School children and elderly use this bridge every day. Fall risk is extreme.",
+      "severity": "critical",
+      "status": "submitted",
+      "address": "BRTS Corridor — Geeta Bhavan Square FOB, Indore",
+      "lat": 22.735,
+      "lon": 75.865,
+      "submitted_at": "2026-05-08",
+      "authority": "Indore Municipal Corporation – BRTS Cell",
+      "authority_tier": "Municipal",
+      "authority_contact": "0731-2700550",
+      "authority_email": "brts@imc.gov.in",
+      "jurisdiction": "BRTS Corridor — Central Stretch",
+      "escalation_path": [
+        {
+          "tier": "BRTS Engineer",
+          "name": "Sri Vivek Soni",
+          "contact": "0731-2700551",
+          "email": "brts.eng@imc.gov.in"
+        },
+        {
+          "tier": "Chief Engineer BRTS",
+          "name": "Sri S.N. Agarwal",
+          "contact": "0731-2700560",
+          "email": "ce.brts@imc.gov.in"
+        }
+      ],
+      "estimated_resolution_days": 2,
+      "road_name": "BRTS Corridor — Geeta Bhavan to Rajwada",
+      "contractor": "M/s Urban Infra Pvt. Ltd.",
+      "contract_value": 12000000,
+      "contract_end": "2027-01-31",
+      "sanctioned_inr": 12000000,
+      "spent_inr": 4500000,
+      "last_repair_date": "2025-12-01",
+      "sla_target_days": 2,
+      "days_elapsed": 1,
+      "history": [
+        {
+          "date": "2026-05-08",
+          "action": "Ticket submitted — Urgent",
+          "actor": "School principal — via RoadWatch App"
+        }
+      ],
+      "photos": [],
+      "ai_confidence": 0.97,
+      "bimstec_context": "Pedestrian infrastructure gaps disproportionately affect women and elderly in BIMSTEC cities. Kathmandu's FOB inspection cycle is quarterly; Bangkok conducts monthly structural checks.",
+      "similar_cases": 56
+    },
+    {
+      "ticket_id": "RW-2026-IND-0036",
+      "issue_type": "Open Manhole",
+      "issue_emoji": "🕳️",
+      "description": "Cast iron manhole cover missing on a busy footpath near Rajwada market. Cover stolen likely for scrap. 18-inch deep shaft exposed. Near-miss incidents reported daily.",
+      "severity": "critical",
+      "status": "resolved",
+      "address": "Rajwada Market Road, Old City, Indore — near Clock Tower",
+      "lat": 22.7177,
+      "lon": 75.8572,
+      "submitted_at": "2026-04-02",
+      "authority": "Indore Municipal Corporation – Sewage & Drain Dept.",
+      "authority_tier": "Municipal",
+      "authority_contact": "0731-2700600",
+      "authority_email": "sewage@imc.gov.in",
+      "jurisdiction": "Ward 03 — Rajwada",
+      "escalation_path": [
+        {
+          "tier": "Drain Engineer",
+          "name": "Sri Bhuvan Sharma",
+          "contact": "0731-2700601",
+          "email": "drain.eng@imc.gov.in"
+        },
+        {
+          "tier": "Chief Engineer",
+          "name": "Sri D.K. Malviya",
+          "contact": "0731-2700300",
+          "email": "ce.roads@imc.gov.in"
+        }
+      ],
+      "estimated_resolution_days": 1,
+      "road_name": "Rajwada Market Lane",
+      "contractor": "IMC Direct Works Division",
+      "contract_value": 0,
+      "contract_end": "2026-12-31",
+      "sanctioned_inr": 50000,
+      "spent_inr": 18000,
+      "last_repair_date": "2026-04-04",
+      "sla_target_days": 1,
+      "days_elapsed": 2,
+      "history": [
+        {
+          "date": "2026-04-04",
+          "action": "Manhole cover replaced — Resolved",
+          "actor": "IMC Direct Works",
+          "note": "Heavy-duty CI cover with anti-theft lock installed"
+        },
+        {
+          "date": "2026-04-03",
+          "action": "Works order issued",
+          "actor": "Ward Officer"
+        },
+        {
+          "date": "2026-04-02",
+          "action": "Ticket submitted — Urgent",
+          "actor": "Local shopkeeper — via RoadWatch App"
+        }
+      ],
+      "photos": [],
+      "ai_confidence": 0.99,
+      "bimstec_context": "Manhole theft is endemic across South Asia — 15,000+ covers stolen annually in Dhaka alone per DWASA 2025 report. Anti-theft locking covers cost ₹3,500 vs ₹800 for standard CI.",
+      "similar_cases": 312
+    },
+    {
+      "ticket_id": "RW-2026-IND-0031",
+      "issue_type": "Stray Cattle on Highway",
+      "issue_emoji": "🐄",
+      "description": "20+ stray cattle occupy 2 lanes of NH-47 near Sanwer Road every night from 10 PM. Responsible for 3 accidents in the last 2 months. No warning signs or barriers installed.",
+      "severity": "critical",
+      "status": "acknowledged",
+      "address": "NH-47 Sanwer Road, Indore — km 8 to km 11",
+      "lat": 22.7601,
+      "lon": 75.81,
+      "submitted_at": "2026-04-20",
+      "authority": "National Highways Authority of India – Indore PIU + Indore District Collectorate",
+      "authority_tier": "National",
+      "authority_contact": "0731-2493000",
+      "authority_email": "collectorate.indore@nic.in",
+      "jurisdiction": "NH-47 — Indore–Sanwer",
+      "escalation_path": [
+        {
+          "tier": "District Collector",
+          "name": "IAS Asheesh Singh",
+          "contact": "0731-2535001",
+          "email": "dm.indore@nic.in"
+        },
+        {
+          "tier": "NHAI Project Director",
+          "name": "Sri Arvind Khatri",
+          "contact": "0731-2493001",
+          "email": "pd.nh47@nhai.gov.in"
+        },
+        {
+          "tier": "Animal Control",
+          "name": "Dr. R.K. Gupta",
+          "contact": "0731-2512000",
+          "email": "vet.indore@mp.gov.in"
+        }
+      ],
+      "estimated_resolution_days": 10,
+      "road_name": "NH-47 — Sanwer Road (km 8–11)",
+      "contractor": "N/A — Multi-agency coordination required",
+      "sanctioned_inr": 2500000,
+      "spent_inr": 0,
+      "sla_target_days": 10,
+      "days_elapsed": 19,
+      "history": [
+        {
+          "date": "2026-05-02",
+          "action": "Multi-agency meeting scheduled",
+          "actor": "Collectorate",
+          "note": "Goshala capacity to be expanded"
+        },
+        {
+          "date": "2026-04-28",
+          "action": "Police night patrolling increased",
+          "actor": "Traffic Police NH-47"
+        },
+        {
+          "date": "2026-04-20",
+          "action": "Ticket submitted",
+          "actor": "Truck driver association — via RoadWatch"
+        }
+      ],
+      "photos": [],
+      "ai_confidence": 0.88,
+      "bimstec_context": "Livestock-related accidents account for 7.2% of highway fatalities in India and Nepal. Sri Lanka's NMSCP program reduced cattle-road conflicts by 60% through GPS-tagged fencing.",
+      "similar_cases": 178
+    },
+    {
+      "ticket_id": "RW-2026-IND-0019",
+      "issue_type": "School Zone Pothole",
+      "issue_emoji": "🏫",
+      "description": "Multiple potholes outside St. Raphael School on Bhanwarkuwa Road. 800+ students commute daily. School bus driver has complained for 3 consecutive months.",
+      "severity": "high",
+      "status": "resolved",
+      "address": "Bhanwarkuwa Main Road near St. Raphael School, Indore",
+      "lat": 22.742,
+      "lon": 75.875,
+      "submitted_at": "2026-02-10",
+      "authority": "Indore Municipal Corporation – Roads Dept.",
+      "authority_tier": "Municipal",
+      "authority_contact": "0731-2700000",
+      "authority_email": "roads@imc.gov.in",
+      "jurisdiction": "Ward 38 — Bhanwarkuwa",
+      "escalation_path": [
+        {
+          "tier": "Ward Officer",
+          "name": "Sri Mohan Paliwal",
+          "contact": "0731-2700108",
+          "email": "ward38@imc.gov.in"
+        },
+        {
+          "tier": "Zonal Engineer",
+          "name": "Sri Suresh Yadav",
+          "contact": "0731-2700218",
+          "email": "zone4eng@imc.gov.in"
+        }
+      ],
+      "estimated_resolution_days": 7,
+      "road_name": "Bhanwarkuwa Main Road (School Zone)",
+      "contractor": "IMC Direct Works Division",
+      "sanctioned_inr": 480000,
+      "spent_inr": 450000,
+      "last_repair_date": "2026-03-01",
+      "sla_target_days": 7,
+      "days_elapsed": 18,
+      "history": [
+        {
+          "date": "2026-03-01",
+          "action": "Road patched — Resolved",
+          "actor": "IMC Direct Works",
+          "note": "300m stretch hot-mix patching done"
+        },
+        {
+          "date": "2026-02-25",
+          "action": "Priority flagged by school",
+          "actor": "Principal's letter to Commissioner"
+        },
+        {
+          "date": "2026-02-10",
+          "action": "Ticket submitted",
+          "actor": "School bus driver — via RoadWatch"
+        }
+      ],
+      "photos": [],
+      "ai_confidence": 0.93,
+      "bimstec_context": "School zone infrastructure is prioritised under India's Safe School Zones policy. Nepal's school zone accident rate is 3× the national average on unmaintained roads.",
+      "similar_cases": 204
+    },
+    {
+      "ticket_id": "RW-2026-IND-0055",
+      "issue_type": "Road Encroachment — Vendor",
+      "issue_emoji": "🏪",
+      "description": "Permanent vendor structure occupying 2.5m of a 7m wide road near Chhatri Chowk, reducing effective carriageway to 4.5m. Creates daily bottleneck at peak hours.",
+      "severity": "medium",
+      "status": "in_progress",
+      "address": "Chhatri Chowk Road, Old Indore — near Sarafa Market",
+      "lat": 22.719,
+      "lon": 75.858,
+      "submitted_at": "2026-04-15",
+      "authority": "Indore Municipal Corporation – Anti-Encroachment Cell",
+      "authority_tier": "Municipal",
+      "authority_contact": "0731-2700700",
+      "authority_email": "encroach@imc.gov.in",
+      "jurisdiction": "Ward 05 — Old Indore",
+      "escalation_path": [
+        {
+          "tier": "Anti-Encroachment Officer",
+          "name": "Sri Bhupesh Jain",
+          "contact": "0731-2700701",
+          "email": "aeo@imc.gov.in"
+        },
+        {
+          "tier": "Zonal Commissioner",
+          "name": "Sri V.K. Trivedi",
+          "contact": "0731-2700720",
+          "email": "zc.old@imc.gov.in"
+        }
+      ],
+      "estimated_resolution_days": 21,
+      "sla_target_days": 21,
+      "days_elapsed": 24,
+      "history": [
+        {
+          "date": "2026-05-01",
+          "action": "Legal notice issued to vendor",
+          "actor": "Anti-Encroachment Cell",
+          "note": "7-day compliance window given"
+        },
+        {
+          "date": "2026-04-20",
+          "action": "Site inspection completed",
+          "actor": "AEO Officer"
+        },
+        {
+          "date": "2026-04-15",
+          "action": "Ticket submitted",
+          "actor": "Motorist — via RoadWatch"
+        }
+      ],
+      "photos": [],
+      "ai_confidence": 0.82,
+      "bimstec_context": "Informal vendor encroachments reduce urban road capacity by 15–40% in South Asian cities. Bangkok's vendor formalisation program relocated 12,000 vendors to designated zones by 2024.",
+      "similar_cases": 891
+    },
+    {
+      "ticket_id": "RW-2026-IND-0066",
+      "issue_type": "Wrong-Way Entry",
+      "issue_emoji": "🚫",
+      "description": "No physical barrier or signage preventing wrong-way entry at the divided highway near Scheme 78 Circle. 15+ vehicles observed entering wrong side daily.",
+      "severity": "high",
+      "status": "submitted",
+      "address": "Scheme 78 Circle, Super Corridor, Indore",
+      "lat": 22.7601,
+      "lon": 75.8989,
+      "submitted_at": "2026-05-06",
+      "authority": "Indore Development Authority – Road Safety Cell",
+      "authority_tier": "State",
+      "authority_contact": "0731-2553800",
+      "authority_email": "roadsafety@ida.mp.gov.in",
+      "jurisdiction": "Super Corridor — IDA Zone",
+      "escalation_path": [
+        {
+          "tier": "IDA Safety Officer",
+          "name": "Sri Deepak Chouhan",
+          "contact": "0731-2553801",
+          "email": "safety.ida@mp.gov.in"
+        },
+        {
+          "tier": "CEO IDA",
+          "name": "IAS Vivek Aggarwal",
+          "contact": "0731-2553700",
+          "email": "ceo@ida.mp.gov.in"
+        }
+      ],
+      "estimated_resolution_days": 5,
+      "sla_target_days": 5,
+      "days_elapsed": 3,
+      "history": [
+        {
+          "date": "2026-05-06",
+          "action": "Ticket submitted + video evidence attached",
+          "actor": "Traffic Police — via RoadWatch"
+        }
+      ],
+      "photos": [],
+      "ai_confidence": 0.95,
+      "bimstec_context": "Wrong-way driving causes 4.1% of head-on fatalities on divided highways. Sri Lanka's expressway authority installed retroreflective wrong-way driver alerts in 2023 — 70% incident reduction.",
+      "similar_cases": 67
+    },
+    {
+      "ticket_id": "RW-2026-IND-0048",
+      "issue_type": "Construction Debris on Road",
+      "issue_emoji": "🏗️",
+      "description": "Metro construction contractor dumping debris on Kanadia Road shoulder. Sharp rubble causing motorcycle punctures. 12 complaints in 10 days.",
+      "severity": "medium",
+      "status": "in_progress",
+      "address": "Kanadia Road near Metro Depot Construction Site, Indore",
+      "lat": 22.732,
+      "lon": 75.848,
+      "submitted_at": "2026-04-28",
+      "authority": "Indore Metro Rail Corporation – Construction Safety",
+      "authority_tier": "State",
+      "authority_contact": "0731-4242424",
+      "authority_email": "safety@imrc.mp.gov.in",
+      "jurisdiction": "Metro Phase 2 — Kanadia Depot",
+      "escalation_path": [
+        {
+          "tier": "Site Safety Officer",
+          "name": "Sri Ankur Dubey",
+          "contact": "0731-4242425",
+          "email": "sso.kanadia@imrc.mp.gov.in"
+        },
+        {
+          "tier": "General Manager",
+          "name": "Sri R.L. Gupta",
+          "contact": "0731-4242400",
+          "email": "gm@imrc.mp.gov.in"
+        }
+      ],
+      "estimated_resolution_days": 3,
+      "sla_target_days": 3,
+      "days_elapsed": 11,
+      "history": [
+        {
+          "date": "2026-05-03",
+          "action": "Clean-up crew deployed",
+          "actor": "IMRC Site Team",
+          "note": "Partial clearance done — debris still accumulating"
+        },
+        {
+          "date": "2026-05-01",
+          "action": "Contractor issued warning",
+          "actor": "IMRC Safety Officer"
+        },
+        {
+          "date": "2026-04-28",
+          "action": "Ticket submitted",
+          "actor": "Local residents' group"
+        }
+      ],
+      "photos": [],
+      "ai_confidence": 0.89,
+      "bimstec_context": "Construction-phase road safety is regulated under IRC:SP:55 in India. Dhaka's DMTCL metro project established a dedicated debris management protocol after 2023 fatalities.",
+      "similar_cases": 143
+    },
+    {
+      "ticket_id": "RW-2026-IND-0060",
+      "issue_type": "Dust Hazard — Unpaved Stretch",
+      "issue_emoji": "🌫️",
+      "description": "600m unpaved service lane behind Vijaynagar BRTS causes dense dust cloud during dry season. Visibility under 10m. 3 rear-end collisions this month.",
+      "severity": "medium",
+      "status": "in_progress",
+      "address": "Vijay Nagar BRTS Service Lane — behind LIG Square, Indore",
+      "lat": 22.748,
+      "lon": 75.891,
+      "submitted_at": "2026-04-22",
+      "authority": "Indore Municipal Corporation – Roads Dept.",
+      "authority_tier": "Municipal",
+      "authority_contact": "0731-2700000",
+      "authority_email": "roads@imc.gov.in",
+      "jurisdiction": "Ward 41 — Vijay Nagar",
+      "escalation_path": [
+        {
+          "tier": "Ward Officer",
+          "name": "Sri Ramesh Patil",
+          "contact": "0731-2700101",
+          "email": "ward41@imc.gov.in"
+        }
+      ],
+      "estimated_resolution_days": 14,
+      "sla_target_days": 14,
+      "days_elapsed": 17,
+      "history": [
+        {
+          "date": "2026-05-04",
+          "action": "Water tanker spraying initiated",
+          "actor": "IMC",
+          "note": "Temporary measure — paving tender under process"
+        },
+        {
+          "date": "2026-04-22",
+          "action": "Ticket submitted",
+          "actor": "BRTS commuter — via RoadWatch"
+        }
+      ],
+      "photos": [],
+      "ai_confidence": 0.84,
+      "similar_cases": 201
+    },
+    {
+      "ticket_id": "RW-2026-IND-0057",
+      "issue_type": "Faded Zebra Crossing",
+      "issue_emoji": "🦓",
+      "description": "Zebra crossing markings outside Maharaja Library completely faded — invisible at night. 3 near-misses involving pedestrians in the past week.",
+      "severity": "medium",
+      "status": "acknowledged",
+      "address": "Maharaja Library Crossing, MG Road, Indore",
+      "lat": 22.7205,
+      "lon": 75.879,
+      "submitted_at": "2026-04-30",
+      "authority": "Indore Municipal Corporation – Road Marking Cell",
+      "authority_tier": "Municipal",
+      "authority_contact": "0731-2700130",
+      "authority_email": "marking@imc.gov.in",
+      "jurisdiction": "Ward 12 — MG Road",
+      "escalation_path": [
+        {
+          "tier": "Road Marking Engineer",
+          "name": "Sri Vikas Bansal",
+          "contact": "0731-2700131",
+          "email": "rme@imc.gov.in"
+        }
+      ],
+      "estimated_resolution_days": 3,
+      "sla_target_days": 3,
+      "days_elapsed": 9,
+      "history": [
+        {
+          "date": "2026-05-03",
+          "action": "Acknowledged — marked for next batch painting",
+          "actor": "IMC Road Marking Cell"
+        },
+        {
+          "date": "2026-04-30",
+          "action": "Ticket submitted",
+          "actor": "Pedestrian safety NGO — via RoadWatch"
+        }
+      ],
+      "photos": [],
+      "ai_confidence": 0.91,
+      "similar_cases": 445
+    },
+    {
+      "ticket_id": "RW-2026-IND-0043",
+      "issue_type": "Speed Bump Damage",
+      "issue_emoji": "📐",
+      "description": "Rubber speed bump on Manik Bagh Road completely broken and partially dislodged. Metal anchor bolts exposed. Motorcycle riders hitting metal at night — 2 falls reported.",
+      "severity": "high",
+      "status": "submitted",
+      "address": "Manik Bagh Road near Kanch Mandir, Indore",
+      "lat": 22.716,
+      "lon": 75.868,
+      "submitted_at": "2026-05-04",
+      "authority": "Indore Municipal Corporation – Roads Dept.",
+      "authority_tier": "Municipal",
+      "authority_contact": "0731-2700000",
+      "authority_email": "roads@imc.gov.in",
+      "jurisdiction": "Ward 15 — Manik Bagh",
+      "escalation_path": [
+        {
+          "tier": "Ward Officer",
+          "name": "Sri Pankaj Malviya",
+          "contact": "0731-2700110",
+          "email": "ward15@imc.gov.in"
+        }
+      ],
+      "estimated_resolution_days": 2,
+      "sla_target_days": 2,
+      "days_elapsed": 5,
+      "history": [
+        {
+          "date": "2026-05-04",
+          "action": "Ticket submitted with night photo",
+          "actor": "Motorcyclist — via RoadWatch"
+        }
+      ],
+      "photos": [],
+      "ai_confidence": 0.93,
+      "similar_cases": 89
+    },
+    {
+      "ticket_id": "RW-2026-IND-0071",
+      "issue_type": "Waterlogging — Monsoon Zone",
+      "issue_emoji": "🌊",
+      "description": "Bypass Road underpass floods to 2.5 ft depth within 30 minutes of moderate rainfall. Last year trapped 14 vehicles. No warning system or barrier in place.",
+      "severity": "high",
+      "status": "acknowledged",
+      "address": "Bypass Road Underpass near Airport Circle, Indore",
+      "lat": 22.7214,
+      "lon": 75.8012,
+      "submitted_at": "2026-04-30",
+      "authority": "Indore Municipal Corporation – Stormwater Drainage Cell",
+      "authority_tier": "Municipal",
+      "authority_contact": "0731-2700650",
+      "authority_email": "drainage@imc.gov.in",
+      "jurisdiction": "Ward 50 — Airport Road",
+      "escalation_path": [
+        {
+          "tier": "Drainage Engineer",
+          "name": "Sri Rajiv Kashyap",
+          "contact": "0731-2700651",
+          "email": "drain.eng@imc.gov.in"
+        },
+        {
+          "tier": "Chief Engineer",
+          "name": "Sri D.K. Malviya",
+          "contact": "0731-2700300",
+          "email": "ce.roads@imc.gov.in"
+        }
+      ],
+      "estimated_resolution_days": 45,
+      "road_name": "Bypass Road — Airport Underpass",
+      "contractor": "M/s Narmada Drainage Solutions",
+      "sanctioned_inr": 32000000,
+      "spent_inr": 4200000,
+      "sla_target_days": 45,
+      "days_elapsed": 9,
+      "history": [
+        {
+          "date": "2026-05-04",
+          "action": "Acknowledged — monsoon priority list",
+          "actor": "IMC Drainage Cell"
+        },
+        {
+          "date": "2026-04-30",
+          "action": "Ticket submitted",
+          "actor": "Airport taxi driver — via RoadWatch"
+        }
+      ],
+      "photos": [],
+      "ai_confidence": 0.96,
+      "bimstec_context": "Urban flooding accounts for 31% of monsoon-season road closures in BIMSTEC coastal cities. Colombo's channel-based stormwater system reduced underpass flooding by 85% after 2022 upgrade.",
+      "similar_cases": 167
+    },
+    {
+      "ticket_id": "RW-2026-DHK-0031",
+      "issue_type": "Critical Pothole — Mirpur Axis",
+      "issue_emoji": "🕳️",
+      "description": "70+ potholes across 4 km of Mirpur Road Section 12 following monsoon flooding. Road surface completely degraded. CNG auto-rickshaws breaking down daily.",
+      "severity": "critical",
+      "status": "in_progress",
+      "address": "Mirpur Road Section 12, Dhaka, Bangladesh — near Shia Masjid",
+      "lat": 23.8041,
+      "lon": 90.3664,
+      "submitted_at": "2026-04-10",
+      "authority": "Dhaka North City Corporation – Roads Division",
+      "authority_tier": "Municipal",
+      "authority_contact": "+88-02-9347444",
+      "authority_email": "roads@dncc.gov.bd",
+      "jurisdiction": "DNCC Ward 14 — Mirpur",
+      "escalation_path": [
+        {
+          "tier": "Ward Engineer",
+          "name": "Engr. Mahbubur Rahman",
+          "contact": "+88-02-9347445",
+          "email": "eng.mirpur@dncc.gov.bd"
+        },
+        {
+          "tier": "Chief Engineer DNCC",
+          "name": "Engr. Abul Kalam Azad",
+          "contact": "+88-02-9341200",
+          "email": "ce@dncc.gov.bd"
+        }
+      ],
+      "estimated_resolution_days": 30,
+      "road_name": "Mirpur Road Sec-12 (km 0–4)",
+      "contractor": "Spectra Engineers Ltd.",
+      "sanctioned_inr": 85000000,
+      "spent_inr": 22000000,
+      "sla_target_days": 30,
+      "days_elapsed": 29,
+      "history": [
+        {
+          "date": "2026-05-05",
+          "action": "Resurfacing crew mobilised",
+          "actor": "Spectra Engineers",
+          "note": "BC mix material procured from Meghna depot"
+        },
+        {
+          "date": "2026-04-20",
+          "action": "Inspection — full road survey",
+          "actor": "DNCC Field Team"
+        },
+        {
+          "date": "2026-04-10",
+          "action": "Ticket submitted",
+          "actor": "Local RWA — Bangladesh"
+        }
+      ],
+      "photos": [],
+      "ai_confidence": 0.91,
+      "bimstec_context": "BIMSTEC REFERENCE (Bangladesh): DNCC road maintenance budget for 2026 is ৳1,800 crore — 34% below engineer estimates for full network maintenance. Dhaka's paved road condition: 58% 'poor or very poor' (BRTA 2025).",
+      "similar_cases": 892
+    },
+    {
+      "ticket_id": "RW-2026-CMB-0018",
+      "issue_type": "Damaged Highway Median",
+      "issue_emoji": "🛣️",
+      "description": "Concrete median divider on Colombo–Katunayake Expressway breached at km 14.2. 8-metre gap allows U-turns on a 100 km/h expressway. 3 fatalities in 2 months at this exact spot.",
+      "severity": "critical",
+      "status": "in_progress",
+      "address": "E03 Katunayake Expressway, km 14.2 — near Ja-Ela interchange, Colombo",
+      "lat": 7.0731,
+      "lon": 79.9006,
+      "submitted_at": "2026-03-28",
+      "authority": "Road Development Authority — Expressway Division, Sri Lanka",
+      "authority_tier": "National",
+      "authority_contact": "+94-11-2682222",
+      "authority_email": "expressway@rda.gov.lk",
+      "jurisdiction": "E03 — Colombo–Katunayake",
+      "escalation_path": [
+        {
+          "tier": "District Engineer",
+          "name": "Engr. Suresh Perera",
+          "contact": "+94-11-2682224",
+          "email": "de.e03@rda.gov.lk"
+        },
+        {
+          "tier": "Director General RDA",
+          "name": "Engr. Nalinda Bandara",
+          "contact": "+94-11-2682100",
+          "email": "dg@rda.gov.lk"
+        }
+      ],
+      "estimated_resolution_days": 14,
+      "road_name": "E03 Expressway (km 13.8–14.5)",
+      "contractor": "China Harbour Engineering Co.",
+      "sanctioned_inr": 42000000,
+      "spent_inr": 11000000,
+      "sla_target_days": 14,
+      "days_elapsed": 41,
+      "history": [
+        {
+          "date": "2026-05-07",
+          "action": "Barrier materials on site",
+          "actor": "CHEC Sri Lanka",
+          "note": "Jersey barriers being installed"
+        },
+        {
+          "date": "2026-04-15",
+          "action": "Escalated after 3rd fatality",
+          "actor": "RDA Director General"
+        },
+        {
+          "date": "2026-03-28",
+          "action": "Initial ticket submitted",
+          "actor": "Police accident report — via RoadWatch integration"
+        }
+      ],
+      "photos": [],
+      "ai_confidence": 0.98,
+      "bimstec_context": "BIMSTEC REFERENCE (Sri Lanka): Expressway median breach is a Level-1 safety defect under SL Road Safety Act 2017 — mandates 7-day repair. This ticket is at 3× SLA breach, the worst in our Sri Lanka dataset.",
+      "similar_cases": 12
+    },
+    {
+      "ticket_id": "RW-2026-KTM-0044",
+      "issue_type": "Landslide Debris — Hill Road",
+      "issue_emoji": "⛰️",
+      "description": "Partial landslide has deposited 3m of rocks and soil across Prithvi Highway at km 119. Single lane kept open but heavy vehicles cannot pass. Full blockage risk after next rainfall.",
+      "severity": "critical",
+      "status": "acknowledged",
+      "address": "Prithvi Highway, km 119 — near Mugling, Chitwan, Nepal",
+      "lat": 27.8583,
+      "lon": 84.5283,
+      "submitted_at": "2026-05-01",
+      "authority": "Department of Roads — Nepal, Central Division",
+      "authority_tier": "National",
+      "authority_contact": "+977-1-4211064",
+      "authority_email": "central@dor.gov.np",
+      "jurisdiction": "Prithvi Highway — Chitwan District",
+      "escalation_path": [
+        {
+          "tier": "Division Road Engineer",
+          "name": "Bishnu Kumar Shrestha",
+          "contact": "+977-1-4211065",
+          "email": "dre.central@dor.gov.np"
+        },
+        {
+          "tier": "Director General DOR",
+          "name": "Ananta Raj Regmi",
+          "contact": "+977-1-4211000",
+          "email": "dg@dor.gov.np"
+        }
+      ],
+      "estimated_resolution_days": 7,
+      "road_name": "Prithvi Highway (km 118–121)",
+      "contractor": "Butwal Power Company Infrastructure",
+      "sanctioned_inr": 38000000,
+      "spent_inr": 0,
+      "sla_target_days": 7,
+      "days_elapsed": 8,
+      "history": [
+        {
+          "date": "2026-05-04",
+          "action": "Excavator deployed",
+          "actor": "DOR Central",
+          "note": "Machine clearing from Mugling side"
+        },
+        {
+          "date": "2026-05-02",
+          "action": "Acknowledged — Emergency",
+          "actor": "DOR Chitwan Office"
+        },
+        {
+          "date": "2026-05-01",
+          "action": "Report filed",
+          "actor": "Highway police + local citizens — via RoadWatch"
+        }
+      ],
+      "photos": [],
+      "ai_confidence": 0.97,
+      "bimstec_context": "BIMSTEC REFERENCE (Nepal): Nepal loses 2–5% of its total highway network annually to landslide events. Prithvi Highway alone sees 40+ blockages per monsoon season. BIMSTEC regional early warning systems are not yet interoperable.",
+      "similar_cases": 156
+    },
+    {
+      "ticket_id": "RW-2026-YGN-0027",
+      "issue_type": "Flooded Bus Terminus Access",
+      "issue_emoji": "🚌",
+      "description": "Main access road to Aung Mingalar Highway Bus Terminal floods 1.5m deep during rain. 200,000 daily users affected. Stormwater drain completely blocked with solid waste.",
+      "severity": "high",
+      "status": "in_progress",
+      "address": "Aung Mingalar Highway Bus Terminal, Yangon, Myanmar — East access road",
+      "lat": 16.8401,
+      "lon": 96.2002,
+      "submitted_at": "2026-04-18",
+      "authority": "Yangon City Development Committee – Roads & Bridges Dept.",
+      "authority_tier": "Municipal",
+      "authority_contact": "+95-1-9010780",
+      "authority_email": "roads@ycdc.gov.mm",
+      "jurisdiction": "YCDC – Hlaing Tharyar Township",
+      "escalation_path": [
+        {
+          "tier": "Township Engineer",
+          "name": "U Kyaw Zin Oo",
+          "contact": "+95-1-9010781",
+          "email": "eng.ht@ycdc.gov.mm"
+        },
+        {
+          "tier": "General Manager Roads",
+          "name": "U Aung Kyaw Myint",
+          "contact": "+95-1-9010700",
+          "email": "gm.roads@ycdc.gov.mm"
+        }
+      ],
+      "estimated_resolution_days": 21,
+      "road_name": "Aung Mingalar Terminal East Access (380m)",
+      "contractor": "Myanmar Infra Development Co.",
+      "sanctioned_inr": 28000000,
+      "spent_inr": 9500000,
+      "sla_target_days": 21,
+      "days_elapsed": 21,
+      "history": [
+        {
+          "date": "2026-05-05",
+          "action": "Drain de-silting started",
+          "actor": "YCDC Roads Team",
+          "note": "3 months of waste extracted"
+        },
+        {
+          "date": "2026-04-25",
+          "action": "Emergency survey completed",
+          "actor": "Township Engineer"
+        },
+        {
+          "date": "2026-04-18",
+          "action": "Ticket submitted",
+          "actor": "Terminal authority — via RoadWatch"
+        }
+      ],
+      "photos": [],
+      "ai_confidence": 0.88,
+      "bimstec_context": "BIMSTEC REFERENCE (Myanmar): Yangon's urban drainage network covers only 42% of roads — the lowest coverage among BIMSTEC capitals. YCDC's 2026 drain upgrade plan targets 65% by 2028 with ADB funding.",
+      "similar_cases": 312
+    },
+    {
+      "ticket_id": "RW-2026-BKK-0009",
+      "issue_type": "Expressway Pavement Crack",
+      "issue_emoji": "🛣️",
+      "description": "Longitudinal cracking over 200m on Outer Ring Road expressway near Don Mueang. Surface failure accelerating — crack width now 4cm. Heavy vehicle bounce creating safety risk.",
+      "severity": "high",
+      "status": "in_progress",
+      "address": "Outer Bangkok Ring Road (Expressway), km 48.3 — near Don Mueang, Bangkok, Thailand",
+      "lat": 13.9125,
+      "lon": 100.6067,
+      "submitted_at": "2026-04-12",
+      "authority": "Expressway Authority of Thailand (EXAT)",
+      "authority_tier": "National",
+      "authority_contact": "+66-2-641-4611",
+      "authority_email": "contact@exat.co.th",
+      "jurisdiction": "EXAT — Outer Ring Road Section 4",
+      "escalation_path": [
+        {
+          "tier": "Section Engineer",
+          "name": "Khun Somchai Tanawong",
+          "contact": "+66-2-641-4614",
+          "email": "sec4eng@exat.co.th"
+        },
+        {
+          "tier": "Director of Operation",
+          "name": "Khun Wirut Phongsuwan",
+          "contact": "+66-2-641-4500",
+          "email": "director@exat.co.th"
+        }
+      ],
+      "estimated_resolution_days": 10,
+      "road_name": "Outer Ring Road — km 48–49",
+      "contractor": "Italian-Thai Development PLC",
+      "sanctioned_inr": 65000000,
+      "spent_inr": 31000000,
+      "sla_target_days": 10,
+      "days_elapsed": 27,
+      "history": [
+        {
+          "date": "2026-05-06",
+          "action": "Milling and overlay crew deployed",
+          "actor": "Italian-Thai Dev.",
+          "note": "Night works to minimise disruption"
+        },
+        {
+          "date": "2026-04-28",
+          "action": "Structural assessment completed",
+          "actor": "EXAT Engineering"
+        },
+        {
+          "date": "2026-04-12",
+          "action": "Ticket submitted",
+          "actor": "EXAT patrol vehicle — via RoadWatch"
+        }
+      ],
+      "photos": [],
+      "ai_confidence": 0.93,
+      "bimstec_context": "BIMSTEC REFERENCE (Thailand): Thailand operates the most mature expressway safety monitoring system in BIMSTEC — real-time structural health monitoring on 6 corridors since 2023. Bangkok's pavement distress detection now uses AI-based dashcam analysis.",
+      "similar_cases": 78
+    },
+    {
+      "ticket_id": "RW-2026-THP-0003",
+      "issue_type": "Alpine Road Subsidence",
+      "issue_emoji": "🏔️",
+      "description": "Lateral spreading and 15cm subsidence on Dochula Pass Road (3,100m elevation) following spring thaw. Guardrail footing exposed. 600+ tourists transit this road daily during season.",
+      "severity": "critical",
+      "status": "acknowledged",
+      "address": "Dochula Pass Road, Thimphu–Punakha Highway, Bhutan — km 23.1",
+      "lat": 27.4925,
+      "lon": 89.7847,
+      "submitted_at": "2026-04-22",
+      "authority": "Department of Roads, Ministry of Infrastructure, Bhutan",
+      "authority_tier": "National",
+      "authority_contact": "+975-2-323788",
+      "authority_email": "roads@dor.gov.bt",
+      "jurisdiction": "National Highway 1 — Thimphu–Punakha",
+      "escalation_path": [
+        {
+          "tier": "Divisional Engineer",
+          "name": "Ugyen Tshering",
+          "contact": "+975-2-323789",
+          "email": "de.thimphu@dor.gov.bt"
+        },
+        {
+          "tier": "Director Roads",
+          "name": "Namgay Dorji",
+          "contact": "+975-2-323700",
+          "email": "director@dor.gov.bt"
+        }
+      ],
+      "estimated_resolution_days": 14,
+      "road_name": "Dochula Pass — Thimphu Side (km 22–24)",
+      "contractor": "Bhutan Construction Development Group",
+      "sanctioned_inr": 22000000,
+      "spent_inr": 0,
+      "sla_target_days": 14,
+      "days_elapsed": 17,
+      "history": [
+        {
+          "date": "2026-05-02",
+          "action": "Geotechnical survey completed",
+          "actor": "DOR Thimphu",
+          "note": "Retaining wall solution recommended"
+        },
+        {
+          "date": "2026-04-28",
+          "action": "Road temporarily to single-lane",
+          "actor": "Highway Police"
+        },
+        {
+          "date": "2026-04-22",
+          "action": "Ticket submitted",
+          "actor": "Tourism operator — via RoadWatch"
+        }
+      ],
+      "photos": [],
+      "ai_confidence": 0.96,
+      "bimstec_context": "BIMSTEC REFERENCE (Bhutan): Bhutan's mountain roads face extreme seasonal damage — 40% of annual maintenance budget addresses thaw-related subsidence and rockfall. All BIMSTEC nations with Himalayan roads (India, Nepal, Bhutan) share similar spring-thaw vulnerability patterns.",
+      "similar_cases": 34
+    },
+    {
+      "ticket_id": "RW-2026-DHK-0034",
+      "issue_type": "Bridge Approach Road Collapse",
+      "issue_emoji": "🌉",
+      "description": "Buriganga Bridge approach road on Dhaka-Mawa Expressway has partially subsided, creating a 25×10 ft depression. Night-time accidents reported daily. Heavy truck access blocked.",
+      "severity": "critical",
+      "status": "acknowledged",
+      "address": "Dhaka-Mawa Expressway, N8 — Buriganga Bridge South Approach, Keraniganj, Dhaka",
+      "lat": 23.7015,
+      "lon": 90.372,
+      "submitted_at": "2026-04-29",
+      "authority": "Roads & Highways Department, Bangladesh",
+      "authority_tier": "National",
+      "authority_contact": "+880-2-55069161",
+      "authority_email": "rhd@rhd.gov.bd",
+      "jurisdiction": "Dhaka Division — Bridge & Highways Wing",
+      "escalation_path": [
+        {
+          "tier": "Bridge Engineer",
+          "name": "Engr. Md. Rafiqul Islam",
+          "contact": "+880-1711-000001",
+          "email": "bridge@rhd.gov.bd"
+        },
+        {
+          "tier": "Superintending Engineer",
+          "name": "Engr. Shahida Begum",
+          "contact": "+880-1711-000002",
+          "email": "se.dhaka@rhd.gov.bd"
+        },
+        {
+          "tier": "Chief Engineer",
+          "name": "Engr. Abdul Karim",
+          "contact": "+880-2-55069162",
+          "email": "ce@rhd.gov.bd"
+        },
+        {
+          "tier": "Secretary, MoRTB",
+          "name": "Secretary Abdul Mannan",
+          "contact": "+880-2-55100001",
+          "email": "secretary@rhd.gov.bd"
+        }
+      ],
+      "estimated_resolution_days": 30,
+      "road_name": "Dhaka-Mawa Expressway N8 (Bridge Approach — 400 m)",
+      "contractor": "Samsung C&T Bangladesh Joint Venture",
+      "contract_value": 280000000,
+      "contract_end": "2027-09-30",
+      "sanctioned_inr": 280000000,
+      "spent_inr": 141000000,
+      "last_repair_date": "2025-07-22",
+      "sla_target_days": 21,
+      "days_elapsed": 9,
+      "history": [
+        {
+          "date": "2026-05-03",
+          "action": "Structural survey commissioned",
+          "actor": "RHD Bridge Division",
+          "note": "Foundation erosion suspected post-monsoon"
+        },
+        {
+          "date": "2026-05-01",
+          "action": "Temporary barriers deployed",
+          "actor": "Traffic Police, Keraniganj"
+        },
+        {
+          "date": "2026-04-30",
+          "action": "Escalated to Superintending Engineer",
+          "actor": "Bridge Engineer, Dhaka Division"
+        },
+        {
+          "date": "2026-04-29",
+          "action": "Complaint logged — BIMSTEC SafeRoad",
+          "actor": "Citizen Report via RoadWatch App"
+        }
+      ],
+      "photos": [],
+      "ai_confidence": 0.97,
+      "bimstec_context": "Bangladesh has 4,876 bridges on national highways; aging infrastructure causes 18% of road fatalities annually. The BIMSTEC Transport Infrastructure Working Group (TWG-2) prioritises bridge health monitoring as a cross-border freight safety measure.",
+      "similar_cases": 127
+    },
+    {
+      "ticket_id": "RW-2026-IND-0062",
+      "issue_type": "Highway Speed-Bump Absent After Resurfacing",
+      "issue_emoji": "🚗",
+      "description": "After resurfacing work on NH-47 (Indore–Ujjain section), 6 speed bumps and 14 retroreflective markers near Sanwer junction were not reinstated. Speeds exceed 90 km/h where limit is 50 km/h.",
+      "severity": "high",
+      "status": "submitted",
+      "address": "NH-47 — Sanwer Junction, 28 km from Indore, Madhya Pradesh",
+      "lat": 22.9721,
+      "lon": 75.8324,
+      "submitted_at": "2026-05-06",
+      "authority": "National Highways Authority of India — MP Zone",
+      "authority_tier": "National",
+      "authority_contact": "1033",
+      "authority_email": "indore@nhai.gov.in",
+      "jurisdiction": "Indore — NH-47 Project Director's Office",
+      "escalation_path": [
+        {
+          "tier": "Project Manager",
+          "name": "Er. Pradeep Verma",
+          "contact": "0731-2700501",
+          "email": "pm.nh47@nhai.gov.in"
+        },
+        {
+          "tier": "Project Director",
+          "name": "Er. Sunita Yadav",
+          "contact": "0731-2700500",
+          "email": "pd.indore@nhai.gov.in"
+        },
+        {
+          "tier": "Regional Officer NHAI",
+          "name": "Er. R.K. Gupta",
+          "contact": "0755-2700100",
+          "email": "ro.bhopal@nhai.gov.in"
+        },
+        {
+          "tier": "NHAI Helpline",
+          "name": "NHAI 24×7 Control Room",
+          "contact": "1033",
+          "email": "helpline@nhai.gov.in"
+        }
+      ],
+      "estimated_resolution_days": 7,
+      "road_name": "NH-47 Sanwer Stretch — 3.4 km (Indore–Ujjain)",
+      "contractor": "PNC Infratech Ltd.",
+      "contract_value": 920000000,
+      "contract_end": "2026-12-31",
+      "sanctioned_inr": 920000000,
+      "spent_inr": 784000000,
+      "last_repair_date": "2026-04-30",
+      "sla_target_days": 7,
+      "days_elapsed": 5,
+      "history": [
+        {
+          "date": "2026-05-06",
+          "action": "Report submitted",
+          "actor": "Citizen — RoadWatch App",
+          "note": "Photos of missing markers attached"
+        },
+        {
+          "date": "2026-05-06",
+          "action": "Auto-routing to NHAI Project Manager",
+          "actor": "AI System — RoadWatch",
+          "note": "High-confidence: speed zone violation"
+        }
+      ],
+      "photos": [],
+      "ai_confidence": 0.93,
+      "bimstec_context": "Missing speed-control infrastructure after resurfacing is a recurring issue across BIMSTEC nations. India's 2024 road safety report found 31% of accident sites had missing or non-functional markers within 12 months of last maintenance.",
+      "similar_cases": 213
+    }
+  ]
+}
