@@ -880,6 +880,7 @@ export function MapController({
   }, [toast])
 
   return (
+    <>
     <div
       className={`space-y-3 relative ${className}`}
       style={forceEmergency && mode === 'emergency' ? {
@@ -1065,6 +1066,7 @@ export function MapController({
         onDismiss={() => setShowShakeModal(false)}
         autoConfirmMs={4000}
       />
+    </>
   )
 }
 
