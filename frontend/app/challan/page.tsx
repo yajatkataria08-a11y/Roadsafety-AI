@@ -575,18 +575,21 @@ export default function ChallanPage() {
           </Link>
         </motion.div>
       </div>
-    </div>
+
       {result && (
         <ChallanExplainerModal
           isOpen={showExplainer}
           onClose={() => setShowExplainer(false)}
           violation={result.violation_input ?? ''}
-          fine={result.total_fine ?? result.base_fine ?? 0}
-          currency={result.currency ?? '₹'}
-          law_section={result.law_section ?? ''}
+          fine={(result as any).total_fine ?? (result as any).base_fine ?? 0}
+          currency={(result as any).currency ?? '₹'}
+          law_section={(result as any).law_section ?? ''}
           country={country}
         />
       )}
     </div>
+  )
+}
+
   )
 }
