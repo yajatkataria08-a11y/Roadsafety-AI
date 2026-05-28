@@ -1,0 +1,64 @@
+<svg width="820" height="110" viewBox="0 0 820 110" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      .s1 { animation: statPop 0.5s 0.1s ease both; }
+      .s2 { animation: statPop 0.5s 0.2s ease both; }
+      .s3 { animation: statPop 0.5s 0.3s ease both; }
+      .s4 { animation: statPop 0.5s 0.4s ease both; }
+      @keyframes statPop {
+        from { opacity: 0; transform: translateY(12px); }
+        to   { opacity: 1; transform: translateY(0); }
+      }
+      .numPulse1 { animation: numP 2.8s 0s ease-in-out infinite; }
+      .numPulse2 { animation: numP 2.8s 0.7s ease-in-out infinite; }
+      .numPulse3 { animation: numP 2.8s 1.4s ease-in-out infinite; }
+      .numPulse4 { animation: numP 2.8s 2.1s ease-in-out infinite; }
+      @keyframes numP {
+        0%,100% { opacity: 1; }
+        50%     { opacity: 0.65; }
+      }
+    </style>
+  </defs>
+  <rect width="820" height="110" rx="14" fill="#0D1018"/>
+
+  <!-- Dividers -->
+  <line x1="205" y1="20" x2="205" y2="90" stroke="white" stroke-opacity="0.06" stroke-width="1"/>
+  <line x1="410" y1="20" x2="410" y2="90" stroke="white" stroke-opacity="0.06" stroke-width="1"/>
+  <line x1="615" y1="20" x2="615" y2="90" stroke="white" stroke-opacity="0.06" stroke-width="1"/>
+
+  <!-- Stat 1 -->
+  <g class="s1">
+    <text class="numPulse1" x="102" y="62" text-anchor="middle"
+          font-family="'Segoe UI',sans-serif" font-weight="900" font-size="34"
+          fill="#FF2D2D" letter-spacing="-1">460K</text>
+    <text x="102" y="80" text-anchor="middle"
+          font-family="monospace" font-size="9" fill="#5A6688" letter-spacing="1">ROAD DEATHS / YR · INDIA</text>
+  </g>
+
+  <!-- Stat 2 -->
+  <g class="s2">
+    <text class="numPulse2" x="307" y="62" text-anchor="middle"
+          font-family="'Segoe UI',sans-serif" font-weight="900" font-size="34"
+          fill="#FFB800" letter-spacing="-1">154</text>
+    <text x="307" y="80" text-anchor="middle"
+          font-family="monospace" font-size="9" fill="#5A6688" letter-spacing="1">VERIFIED VIOLATIONS</text>
+  </g>
+
+  <!-- Stat 3 -->
+  <g class="s3">
+    <text class="numPulse3" x="512" y="62" text-anchor="middle"
+          font-family="'Segoe UI',sans-serif" font-weight="900" font-size="34"
+          fill="#00D87F" letter-spacing="-1">7</text>
+    <text x="512" y="80" text-anchor="middle"
+          font-family="monospace" font-size="9" fill="#5A6688" letter-spacing="1">BIMSTEC NATIONS</text>
+  </g>
+
+  <!-- Stat 4 -->
+  <g class="s4">
+    <text class="numPulse4" x="717" y="62" text-anchor="middle"
+          font-family="'Segoe UI',sans-serif" font-weight="900" font-size="34"
+          fill="#0FA8FF" letter-spacing="-1">5</text>
+    <text x="717" y="80" text-anchor="middle"
+          font-family="monospace" font-size="9" fill="#5A6688" letter-spacing="1">AI PIPELINE LAYERS</text>
+  </g>
+</svg>
