@@ -1,0 +1,110 @@
+<svg width="820" height="320" viewBox="0 0 820 320" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      .line1 { animation: lineFlow 1.6s linear infinite; stroke-dasharray: 8 5; }
+      .line2 { animation: lineFlow 1.6s 0.4s linear infinite; stroke-dasharray: 8 5; }
+      .line3 { animation: lineFlow 1.6s 0.8s linear infinite; stroke-dasharray: 8 5; }
+      .line4 { animation: lineFlow 1.6s 1.2s linear infinite; stroke-dasharray: 8 5; }
+      @keyframes lineFlow { to { stroke-dashoffset: -26; } }
+
+      .hubRing { animation: hubPulse 2.2s ease-in-out infinite; }
+      @keyframes hubPulse {
+        0%,100% { opacity: 0.45; }
+        50%     { opacity: 0.12; }
+      }
+
+      .card1 { animation: cardIn 0.5s 0.1s ease both; }
+      .card2 { animation: cardIn 0.5s 0.25s ease both; }
+      .card3 { animation: cardIn 0.5s 0.4s ease both; }
+      .card4 { animation: cardIn 0.5s 0.55s ease both; }
+      @keyframes cardIn {
+        from { opacity: 0; transform: scale(0.94); }
+        to   { opacity: 1; transform: scale(1); }
+      }
+
+      .dot1 { animation: dotBlink 1.2s ease-in-out infinite; }
+      .dot2 { animation: dotBlink 1.2s 0.3s ease-in-out infinite; }
+      .dot3 { animation: dotBlink 1.2s 0.6s ease-in-out infinite; }
+      .dot4 { animation: dotBlink 1.2s 0.9s ease-in-out infinite; }
+      @keyframes dotBlink {
+        0%,100% { opacity: 1; r: 5; }
+        50%     { opacity: 0.3; r: 7; }
+      }
+    </style>
+  </defs>
+
+  <!-- BG -->
+  <rect width="820" height="320" rx="16" fill="#0D1018"/>
+
+  <!-- Soft glows behind cards -->
+  <ellipse cx="145" cy="72" rx="100" ry="50" fill="#FF2D2D" fill-opacity="0.05"/>
+  <ellipse cx="675" cy="72" rx="100" ry="50" fill="#0FA8FF" fill-opacity="0.05"/>
+  <ellipse cx="145" cy="248" rx="100" ry="50" fill="#00D87F" fill-opacity="0.05"/>
+  <ellipse cx="675" cy="248" rx="100" ry="50" fill="#FFB800" fill-opacity="0.05"/>
+
+  <!-- Hub pulse ring (animated) -->
+  <circle class="hubRing" cx="410" cy="160" r="72" stroke="#FF2D2D" stroke-width="30" fill="none"/>
+
+  <!-- Hub circle -->
+  <circle cx="410" cy="160" r="56" fill="#111822" stroke="#FF2D2D" stroke-opacity="0.55" stroke-width="1.8"/>
+  <text x="410" y="153" text-anchor="middle"
+        font-family="'Segoe UI',sans-serif" font-weight="800" font-size="14" fill="#E8EBF0">Road</text>
+  <text x="410" y="173" text-anchor="middle"
+        font-family="'Segoe UI',sans-serif" font-weight="800" font-size="14" fill="#FF2D2D">Safety AI</text>
+
+  <!-- Connector lines (animated) -->
+  <line class="line1" x1="358" y1="120" x2="218" y2="72" stroke="#FF2D2D" stroke-opacity="0.55" stroke-width="1.6"/>
+  <line class="line2" x1="462" y1="120" x2="602" y2="72" stroke="#0FA8FF" stroke-opacity="0.55" stroke-width="1.6"/>
+  <line class="line3" x1="358" y1="200" x2="218" y2="248" stroke="#00D87F" stroke-opacity="0.55" stroke-width="1.6"/>
+  <line class="line4" x1="462" y1="200" x2="602" y2="248" stroke="#FFB800" stroke-opacity="0.55" stroke-width="1.6"/>
+
+  <!-- Corner dots on hub -->
+  <circle class="dot1" cx="358" cy="120" r="5" fill="#FF2D2D"/>
+  <circle class="dot2" cx="462" cy="120" r="5" fill="#0FA8FF"/>
+  <circle class="dot3" cx="358" cy="200" r="5" fill="#00D87F"/>
+  <circle class="dot4" cx="462" cy="200" r="5" fill="#FFB800"/>
+
+  <!-- CARD: RoadSoS -->
+  <g class="card1">
+    <rect x="44" y="26" width="196" height="92" rx="14" fill="#111822" stroke="#FF2D2D" stroke-opacity="0.6" stroke-width="1.5"/>
+    <rect x="60" y="42" width="32" height="32" rx="9" fill="#FF2D2D" fill-opacity="0.18"/>
+    <text x="76" y="63" text-anchor="middle" font-size="17">🚨</text>
+    <text x="148" y="55" font-family="'Segoe UI',sans-serif" font-weight="700" font-size="13" fill="#FF7070">RoadSoS</text>
+    <text x="148" y="71" font-family="monospace" font-size="9.5" fill="#5A6688">Crash Mode · Golden Hour</text>
+    <text x="148" y="85" font-family="monospace" font-size="9.5" fill="#5A6688">112/108 dispatch</text>
+    <text x="148" y="99" font-family="monospace" font-size="9.5" fill="#5A6688">Nearest trauma centre</text>
+  </g>
+
+  <!-- CARD: DriveLegal -->
+  <g class="card2">
+    <rect x="580" y="26" width="196" height="92" rx="14" fill="#111822" stroke="#0FA8FF" stroke-opacity="0.6" stroke-width="1.5"/>
+    <rect x="596" y="42" width="32" height="32" rx="9" fill="#0FA8FF" fill-opacity="0.15"/>
+    <text x="612" y="63" text-anchor="middle" font-size="17">⚖️</text>
+    <text x="684" y="55" font-family="'Segoe UI',sans-serif" font-weight="700" font-size="13" fill="#5AB4FF">DriveLegal</text>
+    <text x="684" y="71" font-family="monospace" font-size="9.5" fill="#5A6688">154 violations · 7 nations</text>
+    <text x="684" y="85" font-family="monospace" font-size="9.5" fill="#5A6688">Challan calculator</text>
+    <text x="684" y="99" font-family="monospace" font-size="9.5" fill="#5A6688">MV Act RAG · Hinglish</text>
+  </g>
+
+  <!-- CARD: RoadWatch -->
+  <g class="card3">
+    <rect x="44" y="202" width="196" height="92" rx="14" fill="#111822" stroke="#00D87F" stroke-opacity="0.6" stroke-width="1.5"/>
+    <rect x="60" y="218" width="32" height="32" rx="9" fill="#00D87F" fill-opacity="0.15"/>
+    <text x="76" y="239" text-anchor="middle" font-size="17">🗺️</text>
+    <text x="148" y="231" font-family="'Segoe UI',sans-serif" font-weight="700" font-size="13" fill="#5AFFAA">RoadWatch</text>
+    <text x="148" y="247" font-family="monospace" font-size="9.5" fill="#5A6688">Severity heatmap</text>
+    <text x="148" y="261" font-family="monospace" font-size="9.5" fill="#5A6688">Issue reporting · OCR</text>
+    <text x="148" y="275" font-family="monospace" font-size="9.5" fill="#5A6688">SLA breach detection</text>
+  </g>
+
+  <!-- CARD: Authority -->
+  <g class="card4">
+    <rect x="580" y="202" width="196" height="92" rx="14" fill="#111822" stroke="#FFB800" stroke-opacity="0.6" stroke-width="1.5"/>
+    <rect x="596" y="218" width="32" height="32" rx="9" fill="#FFB800" fill-opacity="0.15"/>
+    <text x="612" y="239" text-anchor="middle" font-size="17">🏛️</text>
+    <text x="684" y="231" font-family="'Segoe UI',sans-serif" font-weight="700" font-size="13" fill="#FFD060">Authority Mode</text>
+    <text x="684" y="247" font-family="monospace" font-size="9.5" fill="#5A6688">Ward choropleth map</text>
+    <text x="684" y="261" font-family="monospace" font-size="9.5" fill="#5A6688">Budget · SLA tracking</text>
+    <text x="684" y="275" font-family="monospace" font-size="9.5" fill="#5A6688">BIMSTEC benchmarks</text>
+  </g>
+</svg>
