@@ -1,0 +1,213 @@
+<svg width="860" height="190" viewBox="0 0 860 190" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="hg" x1="0" y1="0" x2="860" y2="0" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#FF2D2D"/>
+      <stop offset="50%" stop-color="#FF7A1A"/>
+      <stop offset="100%" stop-color="#FFB800"/>
+    </linearGradient>
+    <style>
+      .dash { animation: dash 1s linear infinite; }
+      @keyframes dash { to { stroke-dashoffset: -60; } }
+
+      .car1 { animation: car1move 5s linear infinite; }
+      @keyframes car1move {
+        0%   { transform: translateX(-80px); }
+        100% { transform: translateX(940px); }
+      }
+
+      .car2 { animation: car2move 8s 2s linear infinite; }
+      @keyframes car2move {
+        0%   { transform: translateX(-80px); }
+        100% { transform: translateX(940px); }
+      }
+
+      .siren { animation: sirenFlash 0.5s ease-in-out infinite alternate; }
+      @keyframes sirenFlash {
+        from { fill: #FF2D2D; opacity: 1; }
+        to   { fill: #FF2D2D; opacity: 0.1; }
+      }
+
+      .headlight { animation: headlightPulse 2s ease-in-out infinite; }
+      @keyframes headlightPulse {
+        0%,100% { opacity: 0.9; }
+        50%     { opacity: 0.4; }
+      }
+
+      .titleGlow { animation: titleGlow 3s ease-in-out infinite; }
+      @keyframes titleGlow {
+        0%,100% { opacity: 1; }
+        50%     { opacity: 0.8; }
+      }
+
+      .badgeFade1 { animation: badgeFadeIn 0.5s 0.2s both; }
+      .badgeFade2 { animation: badgeFadeIn 0.5s 0.4s both; }
+      .badgeFade3 { animation: badgeFadeIn 0.5s 0.6s both; }
+      .badgeFade4 { animation: badgeFadeIn 0.5s 0.8s both; }
+      .badgeFade5 { animation: badgeFadeIn 0.5s 1.0s both; }
+      @keyframes badgeFadeIn {
+        from { opacity: 0; transform: translateY(6px); }
+        to   { opacity: 1; transform: translateY(0); }
+      }
+
+      .dotPulse { animation: dotPulse 1.4s ease-in-out infinite; }
+      @keyframes dotPulse {
+        0%,100% { r: 3.5; opacity: 1; }
+        50%     { r: 5;   opacity: 0.4; }
+      }
+    </style>
+  </defs>
+
+  <!-- BG -->
+  <rect width="860" height="190" rx="18" fill="#0A0C10"/>
+
+  <!-- Glow blobs -->
+  <ellipse cx="430" cy="55" rx="340" ry="65" fill="#FF2D2D" fill-opacity="0.07"/>
+  <ellipse cx="720" cy="155" rx="200" ry="45" fill="#00C9B1" fill-opacity="0.05"/>
+  <ellipse cx="130" cy="160" rx="140" ry="35" fill="#FF7A1A" fill-opacity="0.04"/>
+
+  <!-- Left accent bar -->
+  <rect x="0" y="0" width="4" height="60" rx="2" fill="url(#hg)"/>
+  <!-- Right accent bar -->
+  <rect x="856" y="0" width="4" height="60" rx="2" fill="url(#hg)"/>
+
+  <!-- Road -->
+  <rect x="0" y="126" width="860" height="64" fill="#111318" rx="0"/>
+  <line x1="0" y1="126" x2="860" y2="126" stroke="#1E2330" stroke-width="1"/>
+
+  <!-- Lane guides -->
+  <line x1="0" y1="140" x2="860" y2="140" stroke="white" stroke-opacity="0.05" stroke-width="1"/>
+  <line x1="0" y1="175" x2="860" y2="175" stroke="white" stroke-opacity="0.05" stroke-width="1"/>
+
+  <!-- Animated center dashes -->
+  <line class="dash" x1="0" y1="157" x2="860" y2="157"
+        stroke="#FFB800" stroke-width="2.5" stroke-dasharray="36 24"/>
+
+  <!-- Road gradient overlay -->
+  <rect x="0" y="126" width="60" height="64" fill="url(#fadeL)"/>
+  <rect x="800" y="126" width="60" height="64" fill="url(#fadeR)"/>
+  <defs>
+    <linearGradient id="fadeL" x1="0" y1="0" x2="1" y2="0" gradientUnits="objectBoundingBox">
+      <stop offset="0%" stop-color="#0A0C10"/>
+      <stop offset="100%" stop-color="#0A0C10" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="fadeR" x1="0" y1="0" x2="1" y2="0" gradientUnits="objectBoundingBox">
+      <stop offset="0%" stop-color="#0A0C10" stop-opacity="0"/>
+      <stop offset="100%" stop-color="#0A0C10"/>
+    </linearGradient>
+  </defs>
+
+  <!-- CAR 1 — Ambulance -->
+  <g class="car1">
+    <rect x="0" y="130" width="56" height="26" rx="6" fill="#1A2540"/>
+    <rect x="8" y="134" width="38" height="14" rx="3" fill="#212E4A"/>
+    <!-- windshield shine -->
+    <rect x="10" y="135" width="14" height="8" rx="2" fill="#2A3A5A" fill-opacity="0.8"/>
+    <rect x="26" y="135" width="14" height="8" rx="2" fill="#2A3A5A" fill-opacity="0.8"/>
+    <!-- wheels -->
+    <circle cx="12" cy="156" r="6" fill="#111"/>
+    <circle cx="12" cy="156" r="3.5" fill="#1E1E1E"/>
+    <circle cx="44" cy="156" r="6" fill="#111"/>
+    <circle cx="44" cy="156" r="3.5" fill="#1E1E1E"/>
+    <!-- tail light -->
+    <rect x="54" y="133" width="4" height="8" rx="1.5" fill="#FF4444" fill-opacity="0.9"/>
+    <!-- headlight -->
+    <circle class="headlight" cx="2" cy="137" r="3" fill="#FFD700" fill-opacity="0.95"/>
+    <!-- siren bar -->
+    <rect class="siren" x="18" y="127" width="20" height="5" rx="2.5"/>
+    <!-- cross symbol -->
+    <rect x="22" y="137" width="12" height="3" rx="1" fill="white" fill-opacity="0.7"/>
+    <rect x="27" y="132" width="3" height="12" rx="1" fill="white" fill-opacity="0.7"/>
+  </g>
+
+  <!-- CAR 2 — Sedan -->
+  <g class="car2">
+    <rect x="0" y="162" width="50" height="22" rx="5" fill="#0D1525"/>
+    <rect x="7" y="165" width="32" height="11" rx="3" fill="#121D30"/>
+    <!-- windshields -->
+    <rect x="9" y="166" width="12" height="7" rx="2" fill="#172540" fill-opacity="0.9"/>
+    <rect x="23" y="166" width="11" height="7" rx="2" fill="#172540" fill-opacity="0.9"/>
+    <!-- wheels -->
+    <circle cx="11" cy="184" r="5.5" fill="#111"/>
+    <circle cx="11" cy="184" r="3" fill="#1E1E1E"/>
+    <circle cx="39" cy="184" r="5.5" fill="#111"/>
+    <circle cx="39" cy="184" r="3" fill="#1E1E1E"/>
+    <!-- tail light -->
+    <rect x="48" y="165" width="3" height="7" rx="1" fill="#FF2D2D" fill-opacity="0.7"/>
+    <!-- headlight -->
+    <circle class="headlight" cx="1" cy="169" r="2.5" fill="#6BC8FF" fill-opacity="0.8"/>
+  </g>
+
+  <!-- TITLE -->
+  <text class="titleGlow" x="430" y="58"
+        text-anchor="middle"
+        font-family="'Segoe UI',system-ui,sans-serif"
+        font-weight="900" font-size="50" letter-spacing="-2">
+    <tspan fill="#E8EBF0">Road</tspan><tspan fill="#FF2D2D">Safety</tspan><tspan fill="#E8EBF0"> AI</tspan>
+  </text>
+
+  <!-- Subtitle -->
+  <text x="430" y="84"
+        text-anchor="middle"
+        font-family="'Segoe UI',system-ui,sans-serif"
+        font-size="12" fill="#7A8299" letter-spacing="2.5">
+    EMERGENCY · LEGAL · SURVEILLANCE · GOVERNANCE
+  </text>
+
+  <!-- Hackathon line -->
+  <text x="430" y="106"
+        text-anchor="middle"
+        font-family="'Segoe UI',system-ui,sans-serif"
+        font-size="11" fill="#4a5568" letter-spacing="0.5">
+    IIT Madras · BIMSTEC Road Safety Hackathon 2026
+  </text>
+
+  <!-- BADGE ROW -->
+  <!-- Badge 1 — CrashMode -->
+  <g class="badgeFade1">
+    <rect x="78" y="112" width="108" height="22" rx="11"
+          fill="#FF2D2D" fill-opacity="0.14"
+          stroke="#FF2D2D" stroke-opacity="0.5" stroke-width="1"/>
+    <circle class="dotPulse" cx="92" cy="123" r="3.5" fill="#FF2D2D"/>
+    <text x="140" y="127" text-anchor="middle"
+          font-family="'Segoe UI',sans-serif" font-size="10" fill="#FF8080">🚨 CrashMode</text>
+  </g>
+
+  <!-- Badge 2 — DriveLegal -->
+  <g class="badgeFade2">
+    <rect x="196" y="112" width="112" height="22" rx="11"
+          fill="#0FA8FF" fill-opacity="0.12"
+          stroke="#0FA8FF" stroke-opacity="0.45" stroke-width="1"/>
+    <text x="252" y="127" text-anchor="middle"
+          font-family="'Segoe UI',sans-serif" font-size="10" fill="#6BC8FF">⚖️ DriveLegal</text>
+  </g>
+
+  <!-- Badge 3 — RoadWatch -->
+  <g class="badgeFade3">
+    <rect x="318" y="112" width="108" height="22" rx="11"
+          fill="#00D87F" fill-opacity="0.12"
+          stroke="#00D87F" stroke-opacity="0.45" stroke-width="1"/>
+    <text x="372" y="127" text-anchor="middle"
+          font-family="'Segoe UI',sans-serif" font-size="10" fill="#6BFFB8">🗺️ RoadWatch</text>
+  </g>
+
+  <!-- Badge 4 — Authority -->
+  <g class="badgeFade4">
+    <rect x="436" y="112" width="124" height="22" rx="11"
+          fill="#FFB800" fill-opacity="0.12"
+          stroke="#FFB800" stroke-opacity="0.45" stroke-width="1"/>
+    <text x="498" y="127" text-anchor="middle"
+          font-family="'Segoe UI',sans-serif" font-size="10" fill="#FFD966">🏛️ Authority Mode</text>
+  </g>
+
+  <!-- Badge 5 — Offline PWA -->
+  <g class="badgeFade5">
+    <rect x="570" y="112" width="112" height="22" rx="11"
+          fill="#00C9B1" fill-opacity="0.12"
+          stroke="#00C9B1" stroke-opacity="0.45" stroke-width="1"/>
+    <text x="626" y="127" text-anchor="middle"
+          font-family="'Segoe UI',sans-serif" font-size="10" fill="#6BFFF0">📡 Offline PWA</text>
+  </g>
+
+  <!-- Bottom gradient line -->
+  <rect x="0" y="124" width="860" height="2" fill="url(#hg)" fill-opacity="0.35"/>
+</svg>
