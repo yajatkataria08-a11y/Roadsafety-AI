@@ -189,32 +189,13 @@ GOOGLE_CLIENT_SECRET=your_google_secret
 ---
 
 ## 📁 Project Structure
-Roadsafety-AI/
-├── backend/
-│   ├── app/
-│   │   ├── main.py
-│   │   ├── routes/          # chat · challan · emergency · map · ocr · report · otp
-│   │   ├── services/        # drivelegal · roadsos · roadwatch · notifier · llm_reasoner
-│   │   ├── models/          # bilstm · intent_classifier · entity_extractor · schemas
-│   │   ├── rag/             # embedder · retriever · seeds
-│   │   ├── geo/             # overpass.py
-│   │   └── utils/
-│   ├── data/
-│   │   └── legal/violations.json
-│   ├── Dockerfile
-│   └── requirements.txt
-├── frontend/
-│   ├── app/                 # chat · challan · emergency · map · report · scan · authority
-│   ├── components/
-│   ├── lib/
-│   └── public/
-├── asset/
-│   ├── hero.svg
-│   ├── architecture.svg
-│   ├── pipeline.svg
-│   ├── nations.svg
-│   └── stats.svg
-└── DEMO_SCRIPT_V17.md
+## 📁 Project Structure
+
+<div align="center">
+
+![Structure](https://raw.githubusercontent.com/yajatkataria08-a11y/Roadsafety-AI/main/asset/structure.svg)
+
+</div>
 ---
 
 ## 🧪 Tests
