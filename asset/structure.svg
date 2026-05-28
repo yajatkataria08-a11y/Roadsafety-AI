@@ -1,0 +1,245 @@
+<svg width="820" height="580" viewBox="0 0 820 580" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      .row { animation: fadeSlide 0.35s ease both; }
+      .r1  { animation-delay: 0.02s; }
+      .r2  { animation-delay: 0.05s; }
+      .r3  { animation-delay: 0.08s; }
+      .r4  { animation-delay: 0.11s; }
+      .r5  { animation-delay: 0.14s; }
+      .r6  { animation-delay: 0.17s; }
+      .r7  { animation-delay: 0.20s; }
+      .r8  { animation-delay: 0.23s; }
+      .r9  { animation-delay: 0.26s; }
+      .r10 { animation-delay: 0.29s; }
+      .r11 { animation-delay: 0.32s; }
+      .r12 { animation-delay: 0.35s; }
+      .r13 { animation-delay: 0.38s; }
+      .r14 { animation-delay: 0.41s; }
+      .r15 { animation-delay: 0.44s; }
+      .r16 { animation-delay: 0.47s; }
+      .r17 { animation-delay: 0.50s; }
+      .r18 { animation-delay: 0.53s; }
+      .r19 { animation-delay: 0.56s; }
+      .r20 { animation-delay: 0.59s; }
+      .r21 { animation-delay: 0.62s; }
+      .r22 { animation-delay: 0.65s; }
+      .r23 { animation-delay: 0.68s; }
+      .r24 { animation-delay: 0.71s; }
+      .r25 { animation-delay: 0.74s; }
+      .r26 { animation-delay: 0.77s; }
+      .r27 { animation-delay: 0.80s; }
+      .r28 { animation-delay: 0.83s; }
+      .r29 { animation-delay: 0.86s; }
+      .r30 { animation-delay: 0.89s; }
+      @keyframes fadeSlide {
+        from { opacity: 0; transform: translateX(-10px); }
+        to   { opacity: 1; transform: translateX(0); }
+      }
+
+      .cursor { animation: blink 1s step-end infinite; }
+      @keyframes blink { 0%,100% { opacity:1; } 50% { opacity:0; } }
+
+      .barPulse { animation: barP 3s ease-in-out infinite; }
+      @keyframes barP {
+        0%,100% { fill-opacity: 1; }
+        50%      { fill-opacity: 0.6; }
+      }
+    </style>
+  </defs>
+
+  <!-- Background -->
+  <rect width="820" height="580" rx="16" fill="#0D1018"/>
+
+  <!-- Top bar (terminal chrome) -->
+  <rect width="820" height="42" rx="16" fill="#111822"/>
+  <rect y="26" width="820" height="16" fill="#111822"/>
+  <circle cx="22" cy="21" r="6" fill="#FF5F57"/>
+  <circle cx="42" cy="21" r="6" fill="#FFBD2E"/>
+  <circle cx="62" cy="21" r="6" fill="#28CA41"/>
+  <text x="410" y="26" text-anchor="middle"
+        font-family="'Segoe UI',sans-serif" font-size="11" fill="#4A5568">
+    Roadsafety-AI — project structure
+  </text>
+
+  <!-- Left accent line -->
+  <rect x="0" y="42" width="3" height="538" rx="1.5" fill="#FF2D2D" fill-opacity="0.5"/>
+
+  <!-- ROOT -->
+  <g class="row r1">
+    <text x="24" y="74" font-family="'Courier New',monospace" font-size="13" fill="#00D87F" font-weight="700">Roadsafety-AI/</text>
+  </g>
+
+  <!-- backend/ -->
+  <g class="row r2">
+    <text x="24" y="96" font-family="'Courier New',monospace" font-size="12" fill="#5A6688">├──</text>
+    <text x="60" y="96" font-family="'Courier New',monospace" font-size="12" fill="#0FA8FF" font-weight="700">backend/</text>
+  </g>
+
+  <!-- app/ -->
+  <g class="row r3">
+    <text x="24" y="116" font-family="'Courier New',monospace" font-size="12" fill="#5A6688">│   ├──</text>
+    <text x="88" y="116" font-family="'Courier New',monospace" font-size="12" fill="#0FA8FF">app/</text>
+  </g>
+
+  <!-- main.py -->
+  <g class="row r4">
+    <text x="24" y="136" font-family="'Courier New',monospace" font-size="12" fill="#5A6688">│   │   ├──</text>
+    <text x="116" y="136" font-family="'Courier New',monospace" font-size="12" fill="#E8EBF0">main.py</text>
+    <text x="310" y="136" font-family="'Courier New',monospace" font-size="10" fill="#4A5568"># FastAPI app · CORS · rate limiting</text>
+  </g>
+
+  <!-- routes/ -->
+  <g class="row r5">
+    <text x="24" y="156" font-family="'Courier New',monospace" font-size="12" fill="#5A6688">│   │   ├──</text>
+    <text x="116" y="156" font-family="'Courier New',monospace" font-size="12" fill="#0FA8FF">routes/</text>
+    <text x="310" y="156" font-family="'Courier New',monospace" font-size="10" fill="#4A5568"># chat · challan · emergency · map · ocr · report · otp</text>
+  </g>
+
+  <!-- services/ -->
+  <g class="row r6">
+    <text x="24" y="176" font-family="'Courier New',monospace" font-size="12" fill="#5A6688">│   │   ├──</text>
+    <text x="116" y="176" font-family="'Courier New',monospace" font-size="12" fill="#0FA8FF">services/</text>
+    <text x="310" y="176" font-family="'Courier New',monospace" font-size="10" fill="#4A5568"># drivelegal · roadsos · roadwatch · notifier · llm_reasoner</text>
+  </g>
+
+  <!-- models/ -->
+  <g class="row r7">
+    <text x="24" y="196" font-family="'Courier New',monospace" font-size="12" fill="#5A6688">│   │   ├──</text>
+    <text x="116" y="196" font-family="'Courier New',monospace" font-size="12" fill="#0FA8FF">models/</text>
+    <text x="310" y="196" font-family="'Courier New',monospace" font-size="10" fill="#4A5568"># bilstm · intent_classifier · entity_extractor · schemas</text>
+  </g>
+
+  <!-- rag/ -->
+  <g class="row r8">
+    <text x="24" y="216" font-family="'Courier New',monospace" font-size="12" fill="#5A6688">│   │   ├──</text>
+    <text x="116" y="216" font-family="'Courier New',monospace" font-size="12" fill="#0FA8FF">rag/</text>
+    <text x="310" y="216" font-family="'Courier New',monospace" font-size="10" fill="#4A5568"># embedder · retriever · seeds (FAISS index builder)</text>
+  </g>
+
+  <!-- geo/ -->
+  <g class="row r9">
+    <text x="24" y="236" font-family="'Courier New',monospace" font-size="12" fill="#5A6688">│   │   ├──</text>
+    <text x="116" y="236" font-family="'Courier New',monospace" font-size="12" fill="#0FA8FF">geo/</text>
+    <text x="310" y="236" font-family="'Courier New',monospace" font-size="10" fill="#4A5568"># overpass.py — nearest hospital · trauma · ambulance</text>
+  </g>
+
+  <!-- utils/ -->
+  <g class="row r10">
+    <text x="24" y="256" font-family="'Courier New',monospace" font-size="12" fill="#5A6688">│   │   └──</text>
+    <text x="116" y="256" font-family="'Courier New',monospace" font-size="12" fill="#0FA8FF">utils/</text>
+    <text x="310" y="256" font-family="'Courier New',monospace" font-size="10" fill="#4A5568"># db.py · helpers.py</text>
+  </g>
+
+  <!-- data/ -->
+  <g class="row r11">
+    <text x="24" y="276" font-family="'Courier New',monospace" font-size="12" fill="#5A6688">│   ├──</text>
+    <text x="88" y="276" font-family="'Courier New',monospace" font-size="12" fill="#0FA8FF">data/</text>
+  </g>
+
+  <!-- violations.json -->
+  <g class="row r12">
+    <text x="24" y="296" font-family="'Courier New',monospace" font-size="12" fill="#5A6688">│   │   └──</text>
+    <text x="116" y="296" font-family="'Courier New',monospace" font-size="12" fill="#FFB800">violations.json</text>
+    <text x="310" y="296" font-family="'Courier New',monospace" font-size="10" fill="#4A5568"># 3.7 MB · 154 violations · 7 BIMSTEC nations</text>
+  </g>
+
+  <!-- tests/ -->
+  <g class="row r13">
+    <text x="24" y="316" font-family="'Courier New',monospace" font-size="12" fill="#5A6688">│   ├──</text>
+    <text x="88" y="316" font-family="'Courier New',monospace" font-size="12" fill="#0FA8FF">tests/</text>
+    <text x="310" y="316" font-family="'Courier New',monospace" font-size="10" fill="#4A5568"># pytest — test_challan · test_entity_extractor</text>
+  </g>
+
+  <!-- Dockerfile -->
+  <g class="row r14">
+    <text x="24" y="336" font-family="'Courier New',monospace" font-size="12" fill="#5A6688">│   ├──</text>
+    <text x="88" y="336" font-family="'Courier New',monospace" font-size="12" fill="#E8EBF0">Dockerfile</text>
+  </g>
+
+  <!-- requirements.txt -->
+  <g class="row r15">
+    <text x="24" y="356" font-family="'Courier New',monospace" font-size="12" fill="#5A6688">│   └──</text>
+    <text x="88" y="356" font-family="'Courier New',monospace" font-size="12" fill="#E8EBF0">requirements.txt</text>
+  </g>
+
+  <!-- Divider line -->
+  <line x1="24" y1="368" x2="796" y2="368" stroke="#1E2330" stroke-width="1"/>
+
+  <!-- frontend/ -->
+  <g class="row r16">
+    <text x="24" y="388" font-family="'Courier New',monospace" font-size="12" fill="#5A6688">├──</text>
+    <text x="60" y="388" font-family="'Courier New',monospace" font-size="12" fill="#00C9B1" font-weight="700">frontend/</text>
+  </g>
+
+  <!-- app/ -->
+  <g class="row r17">
+    <text x="24" y="408" font-family="'Courier New',monospace" font-size="12" fill="#5A6688">│   ├──</text>
+    <text x="88" y="408" font-family="'Courier New',monospace" font-size="12" fill="#00C9B1">app/</text>
+    <text x="310" y="408" font-family="'Courier New',monospace" font-size="10" fill="#4A5568"># chat · challan · emergency · map · report · scan · authority</text>
+  </g>
+
+  <!-- components/ -->
+  <g class="row r18">
+    <text x="24" y="428" font-family="'Courier New',monospace" font-size="12" fill="#5A6688">│   ├──</text>
+    <text x="88" y="428" font-family="'Courier New',monospace" font-size="12" fill="#00C9B1">components/</text>
+    <text x="310" y="428" font-family="'Courier New',monospace" font-size="10" fill="#4A5568"># shared UI components</text>
+  </g>
+
+  <!-- lib/ -->
+  <g class="row r19">
+    <text x="24" y="448" font-family="'Courier New',monospace" font-size="12" fill="#5A6688">│   ├──</text>
+    <text x="88" y="448" font-family="'Courier New',monospace" font-size="12" fill="#00C9B1">lib/</text>
+    <text x="310" y="448" font-family="'Courier New',monospace" font-size="10" fill="#4A5568"># hooks · offline classifier · Dexie schema</text>
+  </g>
+
+  <!-- public/ -->
+  <g class="row r20">
+    <text x="24" y="468" font-family="'Courier New',monospace" font-size="12" fill="#5A6688">│   └──</text>
+    <text x="88" y="468" font-family="'Courier New',monospace" font-size="12" fill="#00C9B1">public/</text>
+    <text x="310" y="468" font-family="'Courier New',monospace" font-size="10" fill="#4A5568"># PWA manifest · service worker · icons</text>
+  </g>
+
+  <!-- Divider line -->
+  <line x1="24" y1="480" x2="796" y2="480" stroke="#1E2330" stroke-width="1"/>
+
+  <!-- asset/ -->
+  <g class="row r21">
+    <text x="24" y="500" font-family="'Courier New',monospace" font-size="12" fill="#5A6688">├──</text>
+    <text x="60" y="500" font-family="'Courier New',monospace" font-size="12" fill="#FF7A1A" font-weight="700">asset/</text>
+    <text x="310" y="500" font-family="'Courier New',monospace" font-size="10" fill="#4A5568"># Hero · Architecture · Pipeline · Nations · Stats</text>
+  </g>
+
+  <!-- DEMO_SCRIPT -->
+  <g class="row r22">
+    <text x="24" y="520" font-family="'Courier New',monospace" font-size="12" fill="#5A6688">├──</text>
+    <text x="60" y="520" font-family="'Courier New',monospace" font-size="12" fill="#FFB800">DEMO_SCRIPT_V17.md</text>
+    <text x="310" y="520" font-family="'Courier New',monospace" font-size="10" fill="#4A5568"># judge walkthrough &amp; Q&amp;A prep</text>
+  </g>
+
+  <!-- README.md -->
+  <g class="row r23">
+    <text x="24" y="540" font-family="'Courier New',monospace" font-size="12" fill="#5A6688">└──</text>
+    <text x="60" y="540" font-family="'Courier New',monospace" font-size="12" fill="#FFB800">README.md</text>
+    <text x="310" y="540" font-family="'Courier New',monospace" font-size="10" fill="#4A5568"># you are here</text>
+
+    <!-- blinking cursor -->
+    <text class="cursor" x="430" y="540" font-family="'Courier New',monospace" font-size="12" fill="#00D87F">█</text>
+  </g>
+
+  <!-- Bottom pill badges -->
+  <rect x="24" y="556" width="90" height="16" rx="8" fill="#0FA8FF" fill-opacity="0.12" stroke="#0FA8FF" stroke-opacity="0.4" stroke-width="1"/>
+  <text x="69" y="568" text-anchor="middle" font-family="monospace" font-size="9" fill="#0FA8FF">FastAPI</text>
+
+  <rect x="122" y="556" width="90" height="16" rx="8" fill="#00C9B1" fill-opacity="0.12" stroke="#00C9B1" stroke-opacity="0.4" stroke-width="1"/>
+  <text x="167" y="568" text-anchor="middle" font-family="monospace" font-size="9" fill="#00C9B1">Next.js 15</text>
+
+  <rect x="220" y="556" width="90" height="16" rx="8" fill="#FFB800" fill-opacity="0.12" stroke="#FFB800" stroke-opacity="0.4" stroke-width="1"/>
+  <text x="265" y="568" text-anchor="middle" font-family="monospace" font-size="9" fill="#FFB800">PyTorch · FAISS</text>
+
+  <rect x="318" y="556" width="90" height="16" rx="8" fill="#FF7A1A" fill-opacity="0.12" stroke="#FF7A1A" stroke-opacity="0.4" stroke-width="1"/>
+  <text x="363" y="568" text-anchor="middle" font-family="monospace" font-size="9" fill="#FF7A1A">Docker · PWA</text>
+
+  <rect x="416" y="556" width="110" height="16" rx="8" fill="#00D87F" fill-opacity="0.12" stroke="#00D87F" stroke-opacity="0.4" stroke-width="1"/>
+  <text x="471" y="568" text-anchor="middle" font-family="monospace" font-size="9" fill="#00D87F">Offline-First</text>
+</svg>
